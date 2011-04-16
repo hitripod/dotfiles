@@ -1,9 +1,10 @@
 Kordan's vimrc
-============
+==============
 Author: Kordan Ou 
+(This vimrc is largly by courtesy of vgod's vimrc)
 
 Installing your Vim environment on another machine
---------------
+--------------------------------------------------
 
 1. Check out from github
 
@@ -94,7 +95,7 @@ Language specific supports
 * HTML, Javascript, Python, CSS, C, C++, Java: use `TAB` to do omni-completion.
 * HTML/XML: End tags are automatically completed after typing a begin tag. (Typing > twice pushes the end tag to a new line.)
 
-Other good references(This vimrc is largly by courtesy of vgod's vimrc)
+Other good references
 ---------------------
 
 * http://blog.vgod.tw/2011/03/19/vimrc/?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+vgod%2Fblog+%28vgod%27s+blog%29&utm_content=Google+Reader
