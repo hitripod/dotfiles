@@ -9,6 +9,7 @@ Installing your Vim environment on another machine
 
         $ cd ~
         $ git clone http://github.com/modcarl/vimrc.git ~/.vim
+        $ cd ~/.vim
         $ git submodule update --init
 
 2. Symbolic Link
