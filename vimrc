@@ -351,3 +351,5 @@ let g:Tex_Leader=','
 " --- SuperTab
 let g:SuperTabDefaultCompletionType = "context" 
 
+" --- Yank Ring 
+nmap <Leader>l :YRShow<CR>
