@@ -29,11 +29,12 @@ set ts=4
 set sw=4
 set hls
 set background=dark
-set nowrap
+"set nowrap
+set wrap
+"set virtualedit=all, because this conflicts with :set wrap
+set tw=0
 "set noai nosi nocindent
-set virtualedit=all
 set showcmd
-set showmode
 set incsearch
 "set paste // if this option is enabled, will conflict with auto-indent
 set nocompatible        " not compatible with the old-fashion vi mode
