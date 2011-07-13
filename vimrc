@@ -226,6 +226,8 @@ cnoremap <C-K>      <C-U>
 
 " ,p toggles paste mode
 nmap <leader>p :set paste!<BAR>set paste?<CR>
+" ,n toggles line number
+nmap <leader>n :set nu!<BAR>set nu?<CR>
 
 " allow multiple indentation/deindentation in visual mode
 vnoremap < <gv
