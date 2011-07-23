@@ -40,12 +40,12 @@
 [submodule "bundle/NerdTree"]
 	path = bundle/NerdTree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "bundle/taglist"]
-	path = bundle/taglist
-	url = https://github.com/mexpolk/vim-taglist.git
 [submodule "bundle/IndexedSearch"]
 	path = bundle/IndexedSearch
 	url = https://github.com/henrik/vim-indexed-search.git
 [submodule "bundle/pyflakes"]
 	path = bundle/pyflakes
 	url = https://github.com/kevinw/pyflakes-vim.git
+[submodule "bundle/taglist"]
+	path = bundle/taglist
+	url = https://github.com/thisivan/vim-taglist.git
