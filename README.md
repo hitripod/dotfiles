@@ -23,10 +23,11 @@ Installing your Vim environment on another machine
         $ git submodule update --init
 
 4. Build for command-t
+
         $ cd ~/.vim/bundle/command-t/ruby/command-t
         $ ruby extconf.rb 
         $ make 
-  
+
 UPGRADE PLUGIN BUNDLES
 ----------------------
 
