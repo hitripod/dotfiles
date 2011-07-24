@@ -21,6 +21,11 @@ Installing your Vim environment on another machine
 3. Initilize and update those plugins installed using 'git submodule'
 
         $ git submodule update --init
+
+4. Build for command-t
+        $ cd ~/.vim/bundle/command-t/ruby/command-t
+        $ ruby extconf.rb 
+        $ make 
   
 UPGRADE PLUGIN BUNDLES
 ----------------------

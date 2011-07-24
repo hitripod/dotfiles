@@ -2,7 +2,7 @@ colors torte
 set go-=T
 set bg=dark
 if &background == "dark"
-    hi normal guibg=black
+    hi normal guibg=black guifg=white
     set transp=8
 endif
 set guifont=Monaco:h14
