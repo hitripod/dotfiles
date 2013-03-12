@@ -1,3 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/Library/Services/Launch Terminal.workflow'
+let g:netrw_dirhist_2='/Users/kordan/xx/gdk'
+let g:netrw_dirhist_3='/Users/kordan/Practices/c++/static_library'
+let g:netrw_dirhist_4='/Volumes/Macintosh HD/Downloads/通訊錄 — 2011年09月26日.abbu'
+let g:netrw_dirhist_5='/Users/kordan/Practices/LexYacc/xx'
+let g:netrw_dirhist_6='/Users/kordan/Practices/LexYacc/cc/Image2Header/rtl8192cu/BB'
+let g:netrw_dirhist_7='/Users/kordan/Dropbox/Career/Research/Projects/pydicGAE/web-app2/src'
+let g:netrw_dirhist_8='/Users/kordan/Dropbox/Career/Research/Projects/Num8er/thenum8er'
+let g:netrw_dirhist_9='/Users/kordan/Dropbox/Career/Research/Projects/pydicGAE'

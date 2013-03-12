@@ -93,6 +93,8 @@ PLUGINS
 
 * [pyflake](http://www.vim.org/scripts/script.php?script_id=2441): PyFlakes on-the-fly Python code checking (:cc for quickfix)
 
+* [gtags](http://www.vim.org/scripts/script.php?script_id=893): Integrates GNU GLOBAL source code tag system with VIM. 
+
 Language specific supports
 --------------------------
 

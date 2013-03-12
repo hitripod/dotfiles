@@ -1,6 +1,45 @@
-" For pathogen.vim: auto load all plugins in .vim/bundle
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+"--------------------------------------------------------------------------- 
+"                              Vundle Settings
+"--------------------------------------------------------------------------- 
+
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle (required)
+Bundle 'gmarik/vundle'
+
+" original repos on github
+Bundle 'sukima/xmledit'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'kien/ctrlp.vim.git'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-surround'
+Bundle 'henrik/vim-indexed-search'
+Bundle 'tpope/vim-fugitive'
+
+" vim-scripts repos
+Bundle 'closetag.vim'
+Bundle 'VisIncr'
+Bundle 'ctags.vim'
+Bundle 'cscope.vim'
+
+" non github repos
+
+filetype plugin indent on     " required!
+ "
+ " Brief help
+ " :BundleList          - list configured bundles
+ " :BundleInstall(!)    - install(update) bundles
+ " :BundleSearch(!) foo - search(or refresh cache first) for foo
+ " :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+ "
+ " see :h vundle for more details or wiki for FAQ
+ " NOTE: comments after Bundle command are not allowed..
 
 "--------------------------------------------------------------------------- 
 "                           General Settings
@@ -22,6 +61,7 @@ else
 endif      
 
 set cindent
+set smartindent            
 set nu
 set secure
 set enc=taiwan
@@ -167,7 +207,7 @@ func CodeFormat()
           elseif &filetype == 'java'
                     exec option_s." --mode=java"
           else 
-                    echo "CodeFormate doesn't support ".&filetype." filetype."
+                    echo "CodeFormat doesn't support ".&filetype." filetype."
           endif
           " return to the line where cursor was
           exec lineNum
@@ -228,6 +268,17 @@ cnoremap <C-K>      <C-U>
 nmap <leader>p :set paste!<BAR>set paste?<CR>
 " ,n toggles line number
 nmap <leader>n :set nu!<BAR>set nu?<CR>
+" Replace the word with yanked text
+nmap <silent> cp "_cw<C-R>"<Esc>
+
+" ,<UP> for the next gtags's search result entry
+"nmap <leader><UP> :cp<CR>
+"nmap <leader><DOWN> :cn<CR>
+
+" Find definition of current symbol using Gtags
+map <C-?> <esc>:Gtags -r <CR>
+" To locate symbols which are not defined in GTAGS
+map <C-S> <esc>:Gtags -s <CR><CR><C-W>t<C-W>10\<
 
 " allow multiple indentation/deindentation in visual mode
 vnoremap < <gv
@@ -355,3 +406,4 @@ let g:SuperTabDefaultCompletionType = "context"
 
 " --- Yank Ring 
 nmap <Leader>l :YRShow<CR>
+
