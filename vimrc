@@ -5,19 +5,19 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/vimfiles/bundle/vundle/
+call vundle#rc("~/vimfiles/bundle/vundle")
 
 " let Vundle manage Vundle (required)
 Bundle 'gmarik/vundle'
 
 " original repos on github
 Bundle 'sukima/xmledit'
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 Bundle 'kien/ctrlp.vim.git'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
+"Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-surround'
 Bundle 'henrik/vim-indexed-search'
 Bundle 'tpope/vim-fugitive'
@@ -25,8 +25,16 @@ Bundle 'tpope/vim-fugitive'
 " vim-scripts repos
 Bundle 'closetag.vim'
 Bundle 'VisIncr'
+if has("unix") " For environment at work (compiled locally)
+    let Tlist_Ctags_Cmd = "~/mytools/bin/ctags"
+elseif has("win32")
+    let Tlist_Ctags_Cmd="C:/Bin/ctags.exe"
+elseif has("win32unix") " For Cygwin
+    let Tlist_Ctags_Cmd="/usr/bin/ctags"
+endif
 Bundle 'ctags.vim'
 Bundle 'cscope.vim'
+Bundle 'taglist.vim'
 
 " non github repos
 
@@ -406,4 +414,6 @@ let g:SuperTabDefaultCompletionType = "context"
 
 " --- Yank Ring 
 nmap <Leader>l :YRShow<CR>
+" --- Ctrl-P
+nmap <Leader>t <c-p>
 
