@@ -417,3 +417,5 @@ nmap <Leader>l :YRShow<CR>
 " --- Ctrl-P
 nmap <Leader>t <c-p>
 
+"colors 256-jungle
+set t_Co=16 "Force it to be a 16 color terminal like a linux console
