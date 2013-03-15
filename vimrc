@@ -21,6 +21,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-surround'
 Bundle 'henrik/vim-indexed-search'
 Bundle 'tpope/vim-fugitive'
+Bundle 'ervandew/supertab'
 
 " vim-scripts repos
 Bundle 'closetag.vim'
@@ -410,7 +411,7 @@ let g:Tex_CompileRule='pdf'
 let g:Tex_Leader=','
 
 " --- SuperTab
-let g:SuperTabDefaultCompletionType = "context" 
+"let g:SuperTabDefaultCompletionType = "context" 
 
 " --- Yank Ring 
 nmap <Leader>l :YRShow<CR>
