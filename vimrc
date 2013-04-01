@@ -361,6 +361,7 @@ endif
 " make CSS omnicompletion work for SASS and SCSS
 autocmd BufNewFile,BufRead *.scss             set ft=scss.css
 autocmd BufNewFile,BufRead *.sass             set ft=sass.css
+autocmd BufRead,BufNewFile *.Rul              set ft=installshield
 
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
