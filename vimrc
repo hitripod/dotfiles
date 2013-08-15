@@ -5,28 +5,37 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/vimfiles/bundle/vundle/
+call vundle#rc("~/vimfiles/bundle/vundle")
 
 " let Vundle manage Vundle (required)
 Bundle 'gmarik/vundle'
 
 " original repos on github
 Bundle 'sukima/xmledit'
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 Bundle 'kien/ctrlp.vim.git'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
+"Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-surround'
 Bundle 'henrik/vim-indexed-search'
 Bundle 'tpope/vim-fugitive'
+Bundle 'ervandew/supertab'
 
 " vim-scripts repos
 Bundle 'closetag.vim'
 Bundle 'VisIncr'
+if has("unix") " For environment at work (compiled locally)
+    let Tlist_Ctags_Cmd = "~/mytools/bin/ctags"
+elseif has("win32")
+    let Tlist_Ctags_Cmd="C:/Bin/ctags.exe"
+elseif has("win32unix") " For Cygwin
+    let Tlist_Ctags_Cmd="/usr/bin/ctags"
+endif
 Bundle 'ctags.vim'
 Bundle 'cscope.vim'
+Bundle 'taglist.vim'
 
 " non github repos
 
@@ -310,6 +319,25 @@ let mapleader=','
 noremap <F1> <Esc>:Tlist<Enter>
 noremap <F2> <Esc>:NERDTreeToggle<Enter>
 
+" tab navigation like firefox
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
+nnoremap <A-F1> 1gt
+nnoremap <A-F2> 2gt
+nnoremap <A-F3> 3gt
+nnoremap <A-F4> 4gt
+nnoremap <A-F5> 5gt
+nnoremap <A-F6> 6gt
+nnoremap <A-F7> 7gt
+nnoremap <A-F8> 8gt
+nnoremap <A-F9> 9gt
+nnoremap <A-F0> 10gt
+
+
 " convert binary to hex
 map <Leader>hon :%!xxd<CR> 
 map <Leader>hof :%!xxd -r<CR>
@@ -352,6 +380,7 @@ endif
 " make CSS omnicompletion work for SASS and SCSS
 autocmd BufNewFile,BufRead *.scss             set ft=scss.css
 autocmd BufNewFile,BufRead *.sass             set ft=sass.css
+autocmd BufRead,BufNewFile *.Rul              set ft=installshield
 
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
@@ -406,4 +435,8 @@ let g:SuperTabDefaultCompletionType = "context"
 
 " --- Yank Ring 
 nmap <Leader>l :YRShow<CR>
+" --- Ctrl-P
+nmap <Leader>t <c-p>
 
+"colors 256-jungle
+set t_Co=16 "Force it to be a 16 color terminal like a linux console
