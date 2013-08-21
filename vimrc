@@ -188,8 +188,8 @@ au FileType python setl autoindent tabstop=4 expandtab shiftwidth=4 softtabstop=
 let g:acp_completeOption='.,w,b,u,t,i,k'
 let g:acp_behaviorSnipmateLength=1
 
-au BufRead,BufNewFile *.c set makeprg=$LLVM_HOME/bin/clang\ -g\ -Wall\ -Wextra\ -ftrapv\ -O0\ %\ -o\ %<
-au BufRead,BufNewFile *.cpp set makeprg=$LLVM_HOME/bin/clang++\ -g\ -Wall\ -Wextra\ -ftrapv\ -O0\ %\ -o\ %<
+au BufRead,BufNewFile *.c set makeprg=clang\ -g\ -Wall\ -Wextra\ -ftrapv\ -O0\ %\ -o\ %<
+au BufRead,BufNewFile *.cpp set makeprg=clang++\ -g\ -Wall\ -Wextra\ -ftrapv\ -O0\ %\ -o\ %<
 au BufRead,BufNewFile *.java set makeprg=javac\ -encoding\ utf8\ %
 au BufRead,BufNewFile *.fx set makeprg=javafxc\ -encoding\ utf8\ % 
 au BufRead,BufNewFile *.{c,cpp,java,fx} nmap <F5> :w<CR>:make<CR>
