@@ -6,14 +6,14 @@ Author: Kordan Ou
 Installing your Vim environment on another machine
 --------------------------------------------------
 
-1. Check out from github
+1. Check Out from Github
 
         $ cd ~
         $ git clone http://github.com/hitripod/vimrc.git ~/.vim
         $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
         $ cd ~/.vim
 
-2. Symbolic Link
+2. Check out [Vundle] to mangage the plugins.
 
         $ ln -s ~/.vim/vimrc ~/.vimrc
         $ ln -s ~/.vim/gvimrc ~/.gvimrc
@@ -28,65 +28,60 @@ Installing your Vim environment on another machine
 PLUGINS
 -------
 
-* [Pathogen](http://www.vim.org/scripts/script.php?script_id=2332): Pathogen let us install a plugin as a bundle in ~/.vim/bundle seprately.
+* [vundle](http://www.github.com/gmarik/vundle): The VIM plug-in manager.
 
-* [xmledit](http://www.vim.org/scripts/script.php?script_id=301): XML/HTML tags will be completed automatically.
+* [Ctrl-P](http://www.github.com/kien/ctrlp.vim.git): Fuzzy file, buffer, mru, tag, etc finder. 
+    
+    Press `,t` to do the fuzzy search. 
 
-* [Command-T](https://github.com/wincent/Command-T): open and navigate between files with `cmd-t`.
-  
-* [SuperTab](http://www.vim.org/scripts/script.php?script_id=1643): Do all your insert-mode completion with Tab.
+* [VIM Powerline](http://www.github.com/Lokaltog/vim-powerline): The ultimate vim statusline utility. 
 
-* [snipMate](http://www.vim.org/scripts/script.php?script_id=2540): TextMate-style snippets for Vim
+* [NERD Tree](http://www.github.com/scrooloose/nerdtree): A tree explorer plugin for vim.
 
-  `:help snipMate` to see more info.
+    Press `F2` to show up the explorer.
 
-* [YankRing](http://www.vim.org/scripts/script.php?script_id=1234): Maintains a history of previous yanks, changes and deletes 
-  
-  `:help yankring` to see more info.
+* [VIM Surround](http://www.github.com/tpope/vim-surround): Make quoting/parenthesizing simpler.
 
-* [VisIncr](http://www.vim.org/scripts/script.php?script_id=670): Produce increasing/decreasing columns of numbers, dates, or daynames.
-  
-* [Cute Error Marker](http://www.vim.org/scripts/script.php?script_id=2653): showing error and warning icons on line.
-  
-   Note: MacVim users need to enable "Use experimental renderer" to see
-   graphical icons.
+    * `cs"'`:      Change Surround from `"` to `'`.
+    * `ds"`:       Change Surround `"`.
+    * `ysiw]`:     Yield Surround `[ ]` in the word.
+    * `ysiw<em>`:  Yield Surround `<em></em>` for the entire line.
+    * `yss)`:      Yield Surround `( )` for the entire line.
 
-* [vim-latex](http://vim-latex.sourceforge.net/): Latex support.
+* [Indexed Search](http://www.github.com/henrik/vim-indexed-search): Show "Match 123 of 456 /search term/" in Vim searches.
 
-* [OmniCppComplete](http://www.vim.org/scripts/script.php?script_id=1520): C/C++ omni-completion with ctags database.
+* [SuperTab](http://www.github.com/ervandew/supertab): Perform all your vim insert mode completions with Tab.
 
-* [JavaComplete](http://www.vim.org/scripts/script.php?script_id=1785): Java Omni-completion.
+* [CloseTag](http://www.github.com/vim-scripts/closetag.vim): Functions and mappings to close open HTML/XML tags.
 
-* [Clang Complete](http://www.vim.org/scripts/script.php?script_id=3302): Using clang for accurately completing C, C++, Obj-C.
+    Press `Ctrl + _` to insert the tag not closed.
 
-* [fugitive](http://www.vim.org/scripts/script.php?script_id=2975): A Git wrapper.
+* [VisIncr](http://www.github.com/vim-scripts/VisIncr): The visincr plugin facilitates making a column of increasing or decreasing
+numbers, dates, or daynames.
 
-* [NERD Tree](http://www.vim.org/scripts/script.php?script_id=1658): A tree explorer plugin for navigating the filesystem.
+    Using the visual-block to select the column you want to append the column number at the beginning of each line, and press `:IO`.
 
-* [Vimball](http://www.vim.org/scripts/script.php?script_id=1502): A vim-based archiver: builds, extracts, and previews.
+* [Ctags](http://www.github.com/vim-scripts/ctags.vim): Display function name in the title bar.
+* [Taglist](http://www.github.com/vim-scripts/taglist.vim): Source code browser.
+    
+    Press `F1` to show the symbol list.
 
-* [plist](http://www.vim.org/scripts/script.php?script_id=1223): Old-Style ASCII Property List 
+* [Cscope](http://www.github.com/vim-scripts/cscope.vim)
 
-* [Taglist](http://www.vim.org/scripts/script.php?script_id=273): Source code browser (supports C/C++, java, perl, python, tcl, sql, php, etc) 
-
-* [Taglist-plus](http://www.vim.org/scripts/script.php?script_id=3504): Source code browser with awesome Javascript support
-
-* [IndexedSearch](http://www.vim.org/scripts/script.php?script_id=1682): shows 'Nth match out of M' at every search (index of match+total # matches) 
-
-* [pyflake](http://www.vim.org/scripts/script.php?script_id=2441): PyFlakes on-the-fly Python code checking (:cc for quickfix)
-
-* [gtags](http://www.vim.org/scripts/script.php?script_id=893): Integrates GNU GLOBAL source code tag system with VIM. 
-
-Language specific supports
---------------------------
-
-* Latex: Read `:help latex-suite.txt`
-* Restructured Text: `ctrl-u 1~5` inserts Part/Chapter/Section headers
-* HTML, Javascript, Python, CSS, C, C++, Java: use `TAB` to do omni-completion.
-* HTML/XML: End tags are automatically completed after typing a begin tag. (Typing > twice pushes the end tag to a new line.)
+    `<leader>fs`: Find this definition
+    `<leader>fg`: Find functions called by this function
+    `<leader>fd`: Find functions calling this function
+    `<leader>fc`: Find this text string
+    `<leader>ft`: Find this egrep pattern
+    `<leader>fe`: Find this file
+    `<leader>ff`: Find files #including this file
+    `<leader>fi`: Find files #including this file
+    `<leader>l` : call ToggleLocationList()
 
 Other good references
 ---------------------
 
 * http://blog.vgod.tw/2011/03/19/vimrc/?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+vgod%2Fblog+%28vgod%27s+blog%29&utm_content=Google+Reader
 * http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/
+
+[Vundle]: https://github.com/gmarik/vundle

@@ -12,7 +12,6 @@ call vundle#rc("~/.vim/bundle/vundle")
 Bundle 'gmarik/vundle'
 
 " original repos on github
-Bundle 'sukima/xmledit'
 "Bundle 'Valloric/YouCompleteMe'
 Bundle 'kien/ctrlp.vim.git'
 Bundle 'Lokaltog/vim-powerline'
@@ -256,9 +255,9 @@ set wmh=0                     " set the min height of a window to 0 so we can ma
 " move around tabs. conflict with the original screen top/bottom
 " comment them out if you want the original H/L
 " go to prev tab 
-map <S-H> gT
+map <C-Tab> gT
 " go to next tab
-map <S-L> gt
+map <C-S-Tab> gt
 
 " new tab
 map <C-t><C-t> :tabnew<CR>
