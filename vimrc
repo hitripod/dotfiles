@@ -35,6 +35,7 @@ endif
 Bundle 'ctags.vim'
 Bundle 'cscope.vim'
 Bundle 'taglist.vim'
+Bundle 'jelera/vim-javascript-syntax'
 
 " non github repos
 
