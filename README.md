@@ -17,6 +17,7 @@ Installing your Vim environment on another machine
 2. Symbolic Link
 
         $ ln -s ~/.vim/vimrc ~/.vimrc
+        $ mklink /H ~/_vimrc ~/vimrc (For Windows)
         $ ln -s ~/.vim/gvimrc ~/.gvimrc
 
 3. Initilize and update those plugins installed using 'git submodule'
