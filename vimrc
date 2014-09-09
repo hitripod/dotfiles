@@ -105,6 +105,7 @@ set wildmenu            " wild char completion menu
 set wildignore=*.o,*.class,*.pyc " ignore these files while expanding wild chars
 set autoindent          " auto indentation
 set nobackup            " no *~ backup files
+set noswapfile
 set copyindent          " copy the previous indentation on autoindenting
 set ignorecase          " ignore case when searching
 set smartcase           " ignore case if search pattern is all lowercase,case-sensitive otherwise
@@ -388,7 +389,7 @@ autocmd BufRead,BufNewFile *.Rul              set ft=installshield
 set encoding=utf-8                                  
 set termencoding=utf-8
 set fileencoding=utf-8
-set fileencodings=ucs-bom,utf-8,big5,latin1
+set fileencodings=utf-8,ucs-bom,big5,latin1
 
 fun! ViewUTF8()
     set encoding=utf-8                                  
@@ -440,3 +441,7 @@ nmap <Leader>t <c-p>
 
 "colors 256-jungle
 set t_Co=16 "Force it to be a 16 color terminal like a linux console
+
+" InstallShield Syntax file
+au BufRead,BufNewFile *.Rul set filetype=ishd
+
