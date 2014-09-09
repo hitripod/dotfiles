@@ -9,9 +9,10 @@ Installing your Vim environment on another machine
 1. Check out from github
 
         $ cd ~
-        $ git clone http://github.com/modcarl/vimrc.git ~/.vim
+        $ git clone http://github.com/modcarl/vimrc.git ~/.vim 
+        $ git clone http://github.com/modcarl/vimrc.git ~/.vimfiles (For Windows)
+        $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
         $ cd ~/.vim
-        $ git submodule update --init
 
 2. Symbolic Link
 
