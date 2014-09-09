@@ -444,4 +444,3 @@ set t_Co=16 "Force it to be a 16 color terminal like a linux console
 
 " InstallShield Syntax file
 au BufRead,BufNewFile *.Rul set filetype=ishd
-
