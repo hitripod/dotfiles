@@ -10,17 +10,20 @@ Installing your Vim environment on another machine
 
         $ cd ~
         $ git clone http://github.com/modcarl/vimrc.git ~/.vim
+        $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
         $ cd ~/.vim
-        $ git submodule update --init
 
 2. Symbolic Link
 
         $ ln -s ~/.vim/vimrc ~/.vimrc
         $ ln -s ~/.vim/gvimrc ~/.gvimrc
+        $ ln -s ~/.vim/zshrc ~/.zshrc
+        $ ln -s ~/.vim/gitconfig ~/.gitconfig
 
-3. Initilize and update those plugins installed using 'git submodule'
+3. Initilize and update those plugins using Vundle
 
-        $ git submodule update --init
+        $ vim 
+        And enter `:BundleInstall`
 
 4. Build for command-t
 

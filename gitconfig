@@ -1,0 +1,60 @@
+[gui]
+	recentrepo = C:/Program Files (x86)/Vim/vim72/新增資料
+[user]
+	email = kordan@realtek.com
+	name = Kordan
+[svn]
+	pushmergeinfo = false
+[alias]
+    st      = status
+	ci      = commit
+    co      = checkout
+    c2      = checkout MP_v2.X
+    c3      = checkout MP_v3.X
+    cp      = cherry-pick
+    lg      = "log --color --graph --pretty=format:'%Cred%h%Creset %C(bold yellow)%d%Creset-%s' --abbrev-commit --"
+
+    lg1     = "log --graph --all --format=format:'%C(bold blue)%h%C(reset) -%C(bold green)[%ad]%C(reset)%C(dim white)-%C(reset)%C(bold yellow)%d%C(reset)%C(white)%s%C(reset)' --abbrev-commit --date=short"
+    lg2     = "log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --abbrev-commit"
+    lgg     = !"git lg1"
+    lm      = "log --name-status"
+    lt      = "tag -ln"
+    br      = branch -v
+    go      = rebase --continue
+    hreset  = reset --hard
+    dt      = checkout --detach
+    update  = pull --rebase origin master
+    upload  = push origin master
+    final   = rebase -i HEAD~2
+    dry     = merge --no-commit --no-ff
+    usub    = "submodule foreach --recursive git pull --rebase origin master"
+    pushnan    = "push bitbucket feature-NAN"
+    pullnan    = "pull --rebase bitbucket feature-NAN"
+[difftool "araxis"]
+    path = "/c/Program Files/Araxis/Araxis Merge/compare.exe"
+    renames = true
+    trustExitCode = true
+[diff]
+    tool = araxis
+    stat = true
+[mergetool "araxis"]
+    path = C:\\Program Files\\Araxis\\Araxis Merge\\compare.exe
+    keepBackup = false
+[merge]
+	tool = araxis
+    #stat = true
+[merge "ours"]
+    name = "Keep ours merge"
+    driver = true
+[core]
+	autocrlf = true
+	whitespace = nowarn
+[receive]
+	denyDeleteCurrent = ignore
+[credential]
+	helper = !'C:\\Users\\Kordan\\AppData\\Roaming\\GitCredStore\\git-credential-winstore.exe'
+[mergetool "p4merge"]
+	path = C:\\Program Files\\Perforce\\p4merge.exe
+[http]
+	sslVerify = false
+	sslCAInfo = /c/Users/Kordan/Dropbox/Realtek/Documents/NAN/Sigma/cert.pem
