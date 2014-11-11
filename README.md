@@ -8,28 +8,25 @@ Installing your Vim environment on another machine
 
 1. Check out from github
 
-        $ cd ~
-        $ git clone http://github.com/modcarl/vimrc.git ~/.vim 
-        $ git clone http://github.com/modcarl/vimrc.git ~/.vimfiles (For Windows)
-        $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
-        $ cd ~/.vim
+		$ cd %USERPROFILE%
+        $ git clone http://github.com/modcarl/vimrc.git %USERPROFILE%/.vimfiles
+        $ git clone https://github.com/gmarik/Vundle.vim.git %USERPROFILE%/.vimfiles/bundle/vundle
+        $ cd %USERPROFILE%/.vimfiles
 
 2. Symbolic Link
 
-        $ ln -s ~/.vim/vimrc ~/.vimrc
-        $ mklink /H ~/_vimrc ~/vimrc (For Windows)
-        $ ln -s ~/.vim/gvimrc ~/.gvimrc
+		$ mklink /H %USERPROFILE%\_vimrc .\vimrc
+		$ mklink /H %USERPROFILE%\_gvimrc .\gvimrc
 
-3. Initilize and update those plugins installed using 'git submodule'
+3. Change the Vundle installtion path:
 
-        $ git submodule update --init
+		set rtp+=~/.vimfiles/bundle/vundle/
+		call vundle#rc("~/.vimfiles/bundle/vundle")
 
-4. Build for command-t
+4. Open vim to install VIM plugins by Vundle		
 
-        $ cd ~/.vim/bundle/command-t/ruby/command-t
-        $ ruby extconf.rb 
-        $ make 
-
+		:BundleInstall
+		
 UPGRADE PLUGIN BUNDLES
 ----------------------
 
@@ -41,7 +38,7 @@ Except for:
 All plugins were checked out as git submodules, 
 which can be upgraded with `git pull`. For example, to upgrade Command-T 
 
-     $ cd ~/.vim/bundle/command-t
+     $ cd %USERPROFILE%/.vimfiles/bundle/command-t
      $ git pull
 
 
