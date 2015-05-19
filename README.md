@@ -9,7 +9,7 @@ Installing your Vim environment on another machine
 1. Check out from github
 
         $ cd ~
-        $ git clone http://github.com/modcarl/vimrc.git ~/.vim
+        $ git clone http://github.com/hitripod/vimrc.git ~/.vim
         $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
         $ cd ~/.vim
 
@@ -24,27 +24,6 @@ Installing your Vim environment on another machine
 
         $ vim 
         And enter `:BundleInstall`
-
-4. Build for command-t
-
-        $ cd ~/.vim/bundle/command-t/ruby/command-t
-        $ ruby extconf.rb 
-        $ make 
-
-UPGRADE PLUGIN BUNDLES
-----------------------
-
-Except for:
-1. vimball
-2. plist
-3. taglist-plus
-
-All plugins were checked out as git submodules, 
-which can be upgraded with `git pull`. For example, to upgrade Command-T 
-
-     $ cd ~/.vim/bundle/command-t
-     $ git pull
-
 
 PLUGINS
 -------

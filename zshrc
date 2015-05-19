@@ -1,7 +1,8 @@
 # for building Android
 ulimit -S -n 1024
 
-export PATH="/usr/local/bin:/opt/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/X10R6/bin:/usr/local/jdk1.6.0_07/bin:/sw/bin:$HOME/android-sdk-mac_x86/platform-tools:$HOME/bin/binutils/bin:$HOME/bin:$HOME/llvm-2.8/bin:/usr/local/texlive/2010basic/bin:/Users/kordan/bin/python-client"
+export GOPATH=$HOME/go
+export PATH="/usr/local/bin:/opt/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/X10R6/bin:/usr/local/jdk1.6.0_07/bin:/sw/bin:$HOME/android-sdk-mac_x86/platform-tools:$HOME/bin/binutils/bin:$HOME/bin:$HOME/llvm-2.8/bin:/usr/local/texlive/2010basic/bin:/Users/kordan/bin/python-client:/usr/local/texlive/2010/bin/x86_64-darwin:/usr/local/Cellar/ruby/1.9.2-p290/bin:/Developer/usr/bin:$HOME/.rvm/gems/ruby-2.0.0-p247@rails-4.0.0/bin:$GOPATH"
 export EDITOR=vim
 export LANG=en_US.UTF-8
 
@@ -18,16 +19,31 @@ then
     #export LSCOLORS="gxfxcxdxbxegedabagacad"
     export LSCOLORS="ExFxCxDxCxEgEdAbAgAcAd"
     export LLVM_HOME="/Users/kordan/llvm-128332-bin"
+    export PYTHONPATH="/Library/Python/2.7/site-packages:$PYTHONPATH"
     alias ls='ls -Gv'
     alias ll='ls -laGvh'
     alias grep='grep --color=auto'
     alias h='history'
     alias top='top -u'
+    alias vi='vim'
+    alias wxpython='arch -i386 python' # wxpython is now a x86 installation
+    alias clang='xcrun clang --sysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/'
+    alias clang++='xcrun clang++ --sysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/'
+    alias wedding='rsync -avz -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress ~/Desktop/wedding_day-pack modcarl@troup.dreamhost.com:/home/modcarl/hitripod.com/public/marriage/20140920/'
 
     # Safe delete
     del() {
         mv $@ ~/.Trash
     }
+
+    # MySQL
+    mysqlservice() {
+        sudo /usr/local/Cellar/mysql/5.6.22/support-files/mysql.server $@
+    }
+
+    # ZSH auto completion
+    fpath=($HOME/.zsh/func $fpath)
+    typeset -U fpath
 
     # Copy the file content
     copy() {
@@ -61,43 +77,34 @@ then
         end run
 EOF
       fi
-export LS_COLORS="no=00:fi=00:di=01;37:ln=01;36:\ 
-#pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:\ 
-#or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:\ 
-#*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:\ 
-#*.z=01;31:*.Z=01;31:*.gz=01;31:*.deb=01;31:\ 
-#*.jpg=01;35:*.gif=01;35:*.bmp=01;35:*.ppm=01;35:\ 
-#*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:\ 
-#*.mpg=01;37:*.avi=01;37:*.gl=01;37:*.dl=01;37:"
+    }
 
+    hideDesktop () {
+        if [ $1 = "yes" ]; then
+            defaults write com.apple.finder CreateDesktop -bool FALSE; killall Finder;
+        else if [ $1 = "no" ]; then
+            defaults write com.apple.finder CreateDesktop -bool TRUE; killall Finder;
+        else
+            echo "Usage: hideDesktop yes|no" 
+        fi fi
+    }
 #---------------------------------------------------##
 #                   End of MAC only 
 #---------------------------------------------------##
-    }
 elif [[ $UNAME == "Linux" ]]
 then
-    alias ls='ls --color=auto'
-    alias ll='ls -al'
-    export LS_COLORS="no=00:fi=00:di=01;37:ln=01;36:\
-pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01\
-or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:\
-*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:\
-*.z=01;31:*.Z=01;31:*.gz=01;31:*.deb=01;31:\
-*.jpg=01;35:*.gif=01;35:*.bmp=01;35:*.ppm=01;35:\
-*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:\
-*.mpg=01;37:*.avi=01;37:*.gl=01;37:*.dl=01;37"
+   #alias ls='ls --color=auto'
 fi
 
 #---------------------------------------------------##
 #                       Modcarl 
 #---------------------------------------------------##
 
-bindkey '^[[1~' beginning-of-line
-bindkey '^[[4~' end-of-line
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
 bindkey "\e[3~" delete-char
-[[ -n "${key[Up]}"      ]] && bindkey  "${key[Up]}"      history-beginning-search-backward
-[[ -n "${key[Down]}"    ]] && bindkey  "${key[Down]}"    history-beginning-search-forward
-
+bindkey '^[[B'  history-beginning-search-forward
+bindkey '^[[A'  history-beginning-search-backward
 
 autoload -U colors && colors
 #echo "$fg_bold[red]zsh $fg_no_bold[white]is $bg[blue]$fg_bold[green]nice"
@@ -117,14 +124,29 @@ my_accounts=(
     {tom,dick,harry,root}@othermachine.com 
     sapporo@{ahost.com,somehost.com}
     modcarl@140.112.29.194
+    admin@192.168.1.1
+    admin@h.hitripod.com
     r98922097@linux2.csie.ntu.edu.tw
-    modcarl@washingtondc.dreamhost.com
+    modcarl@troup.dreamhost.com
+    kordan@106.185.45.32
+    root@h.hitripod.com
+    ubuntu@54.200.200.66
+    root@61.164.125.234
+    vm-0.kordan.koding.kd.io
     )
 zstyle ':completion:*:my-accounts' users-hosts $my_accounts
 zstyle ':completion:*:(ssh|scp):*' tag-order users-hosts users hosts
 zstyle ':completion:*:(ssh|scp):*' group-order users-hosts users hosts 
 
 zmodload -i zsh/complist
+export LS_COLORS="no=00:fi=00:di=01;37:ln=01;36:\ 
+#pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:\ 
+#or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:\ 
+#*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:\ 
+#*.z=01;31:*.Z=01;31:*.gz=01;31:*.deb=01;31:\ 
+#*.jpg=01;35:*.gif=01;35:*.bmp=01;35:*.ppm=01;35:\ 
+#*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:\ 
+#*.mpg=01;37:*.avi=01;37:*.gl=01;37:*.dl=01;37:"
 export ZLS_COLORS=$LS_COLORS
 
 # For mac: spotlight search
@@ -140,7 +162,11 @@ swap () {
 }
 # gg x grep string x
 gg () {
-    grep -r --color "$1" .
+    if [ $# -eq 2 ]; then
+        grep -rI --color "$1" "$2" --ignore-case --exclude=tags --exclude=react-bootstrap.min.js
+    else
+        grep -rI --color "$1" . --ignore-case --exclude=tags --exclude=react-bootstrap.min.js
+    fi
 }
 # ff x find file named x
 ff () {
@@ -158,6 +184,27 @@ wordcount () {
 # Histogram words
 (cat $* | tr -s ' .,;:?!()[]"' '\012' | cat -n | tail -1 | awk '{print $1}')
 }
+
+setip () {
+    if [ $1 = "list" ]; then
+        echo "lab, dhcp"
+    else if [ $1 = "lab" ]; then
+        networksetup -setmanual Ethernet 140.112.29.202 255.255.255.0 140.112.29.254
+    else if [ $1 = "dhcp" ]; then
+        networksetup -setdhcp Ethernet
+    else
+        echo "Usage: setip [list|lab|dhcp]" 
+    fi fi fi 
+}
+
+run_parallel () {
+    sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_hypervisor.kext"&&\
+    sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_hid_hook.kext"&&\
+    sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_usb_connect.kext"&&\
+    sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_netbridge.kext"&&\
+    sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_vnic.kext"
+}
+
 # Show the absolute file path
 abs () {
 find $PWD -name $1
@@ -181,7 +228,7 @@ adbi () {
 }
 
 upload() {
-    cp $1 ~/Dropbox/Public/
+    #cp $1 ~/Dropbox/Public/
     echo 'http://dl.dropbox.com/u/3968081/'$1 |pbcopy
 }
 
@@ -203,19 +250,22 @@ rsync -av -e ssh modcarl@140.112.29.194:$SRC $DEST
 typeset -U path manpath fpath #cdpath
 
 ## cd : dirs in home and one dir up
-#cdpath=(~ ..)
+cdpath=(~ ..)
 
 # path alias, e.g. cd ~XXX
 AND_HOME="/Volumes/Android/cyanogen-passion"
 hash -d PROJ="/Users/kordan//Dropbox/Career/Research/Projects/"
-hash -d WORK="/Users/kordan/Dropbox/Career/Research/RemoteRenderScript/rs"
+hash -d WORK="/Users/kordan/Practices/LexYacc/cc/FromScratch"
 hash -d ACP="/Users/kordan/modcarl/Advanced Computer Programming/"
 hash -d AND="$AND_HOME"
 hash -d RS="$AND_HOME/frameworks/base/libs/rs"
 hash -d RSJ="$AND_HOME/frameworks/base/graphics/java/android/renderscript"
+hash -d RSJNI="$AND_HOME/frameworks/base/graphics/jni"
 hash -d RSI="$AND_HOME/out/target/product/passion/obj/libRS_intermediates"
 hash -d P="/Users/kordan/Dropbox/Career/Research/Latex/Template 拷貝/RenderScript-paper"
 hash -d d="/Users/kordan/Downloads/"
+hash -d KO="/Users/kordan/CodeProject/nodejs/quick-hitter"
+hash -d PKO="/Users/kordan/Practices/nodejs"
 
 alias hls='hash -d'
 
@@ -589,3 +639,8 @@ $PR_CYAN$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT$PR_NO_COLOUR '
 }
 
 setprompt
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
