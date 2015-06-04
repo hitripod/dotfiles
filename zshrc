@@ -16,11 +16,11 @@ then
 #---------------------------------------------------##
 #                       MAC only 
 #---------------------------------------------------##
-    #export LSCOLORS="gxfxcxdxbxegedabagacad"
     export LSCOLORS="ExFxCxDxCxEgEdAbAgAcAd"
     export LLVM_HOME="/Users/kordan/llvm-128332-bin"
     export PYTHONPATH="/Library/Python/2.7/site-packages:$PYTHONPATH"
     alias ls='ls -Gv'
+    alias sloc='cloc-1.62.pl'
     alias ll='ls -laGvh'
     alias grep='grep --color=auto'
     alias h='history'
@@ -34,6 +34,11 @@ then
     # Safe delete
     del() {
         mv $@ ~/.Trash
+    }
+
+    # Spotlight search
+    spot () {
+        mdfind -name $1
     }
 
     # MySQL
@@ -50,8 +55,16 @@ then
         cat $1 | pbcopy
     }
 
+    run_parallel () {
+        sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_hypervisor.kext"&&\
+        sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_hid_hook.kext"&&\
+        sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_usb_connect.kext"&&\
+        sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_netbridge.kext"&&\
+        sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_vnic.kext"
+    }
+
     # Set label color
-    label(){
+    label() {
       if [ $# -lt 2 ]; then
         echo "USAGE: label [0-7] file1 [file2] ..."
         echo "Sets the Finder label (color) for files"
@@ -88,6 +101,10 @@ EOF
             echo "Usage: hideDesktop yes|no" 
         fi fi
     }
+
+    ### Init the environment setting of docker-machine
+    eval $(docker-machine env dev)
+
 #---------------------------------------------------##
 #                   End of MAC only 
 #---------------------------------------------------##
@@ -97,11 +114,11 @@ then
 fi
 
 #---------------------------------------------------##
-#                       Modcarl 
+#                      Kordan 
 #---------------------------------------------------##
 
-bindkey '^[[H' beginning-of-line
-bindkey '^[[F' end-of-line
+bindkey '^[[H'  beginning-of-line
+bindkey '^[[F'  end-of-line
 bindkey "\e[3~" delete-char
 bindkey '^[[B'  history-beginning-search-forward
 bindkey '^[[A'  history-beginning-search-backward
@@ -133,7 +150,8 @@ my_accounts=(
     ubuntu@54.200.200.66
     root@61.164.125.234
     vm-0.kordan.koding.kd.io
-    )
+)
+
 zstyle ':completion:*:my-accounts' users-hosts $my_accounts
 zstyle ':completion:*:(ssh|scp):*' tag-order users-hosts users hosts
 zstyle ':completion:*:(ssh|scp):*' group-order users-hosts users hosts 
@@ -149,10 +167,6 @@ export LS_COLORS="no=00:fi=00:di=01;37:ln=01;36:\
 #*.mpg=01;37:*.avi=01;37:*.gl=01;37:*.dl=01;37:"
 export ZLS_COLORS=$LS_COLORS
 
-# For mac: spotlight search
-spot () {
-    mdfind -name $1
-}
 
 # Swap the file names
 swap () {
@@ -160,29 +174,34 @@ swap () {
     mv $2 $1
     mv tmp $2
 }
-# gg x grep string x
+
 gg () {
-    if [ $# -eq 2 ]; then
-        grep -rI --color "$1" "$2" --ignore-case --exclude=tags --exclude=react-bootstrap.min.js
-    else
-        grep -rI --color "$1" . --ignore-case --exclude=tags --exclude=react-bootstrap.min.js
-    fi
+    #if [ $# -eq 2 ]; then
+    #    grep -rIn --color "$1" "$2" --ignore-case --exclude=tags --exclude=react-bootstrap.min.js
+    #else
+        grep -rIn --color $* ./* --ignore-case --exclude=tags --exclude="*.min.js" --exclude="*.min.css" --exclude="*bootstrap.js"\
+            --exclude="*.min.map"
+    #fi
 }
+
 # ff x find file named x
 ff () {
-find . -name $1 -print
+    find . -name $1 -print
 }
-files () {
+
 # files x => list files in x
-find $1 -type f -print
+files () {
+    find $1 -type f -print
 }
-word () {
+
 # Grep thru dictionary
-grep $* /usr/share/dict/web2
+word () {
+    grep $* /usr/share/dict/web2
 }
-wordcount () {
+
 # Histogram words
-(cat $* | tr -s ' .,;:?!()[]"' '\012' | cat -n | tail -1 | awk '{print $1}')
+wordcount () {
+    (cat $* | tr -s ' .,;:?!()[]"' '\012' | cat -n | tail -1 | awk '{print $1}')
 }
 
 setip () {
@@ -197,17 +216,10 @@ setip () {
     fi fi fi 
 }
 
-run_parallel () {
-    sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_hypervisor.kext"&&\
-    sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_hid_hook.kext"&&\
-    sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_usb_connect.kext"&&\
-    sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_netbridge.kext"&&\
-    sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_vnic.kext"
-}
 
 # Show the absolute file path
 abs () {
-find $PWD -name $1
+    find $PWD -name $1
 }
 
 # adb for iPhone
@@ -228,7 +240,6 @@ adbi () {
 }
 
 upload() {
-    #cp $1 ~/Dropbox/Public/
     echo 'http://dl.dropbox.com/u/3968081/'$1 |pbcopy
 }
 
@@ -238,12 +249,12 @@ tohtml() {
 }
 
 backup() {
-DEST="/Users/kordan/Dropbox/Career/Research/RemoteRenderScript"
-SRC="/home/modcarl/cyanogen2.3.3-new-RS-bundle/frameworks/base/libs/rs"
-rsync -av -e ssh modcarl@140.112.29.194:$SRC $DEST
-DEST="/Users/kordan/Dropbox/Career/Research/RemoteRenderScript"
-SRC="/home/modcarl/cyanogen2.3.3-new-RS-bundle/out/target/product/crespo/obj/SHARED_LIBRARIES/libRS_intermediates"
-rsync -av -e ssh modcarl@140.112.29.194:$SRC $DEST
+    DEST="/Users/kordan/Dropbox/Career/Research/RemoteRenderScript"
+    SRC="/home/modcarl/cyanogen2.3.3-new-RS-bundle/frameworks/base/libs/rs"
+    rsync -av -e ssh modcarl@140.112.29.194:$SRC $DEST
+    DEST="/Users/kordan/Dropbox/Career/Research/RemoteRenderScript"
+    SRC="/home/modcarl/cyanogen2.3.3-new-RS-bundle/out/target/product/crespo/obj/SHARED_LIBRARIES/libRS_intermediates"
+    rsync -av -e ssh modcarl@140.112.29.194:$SRC $DEST
 }
 
 ## Get rid of dups in paths
@@ -265,7 +276,7 @@ hash -d RSI="$AND_HOME/out/target/product/passion/obj/libRS_intermediates"
 hash -d P="/Users/kordan/Dropbox/Career/Research/Latex/Template 拷貝/RenderScript-paper"
 hash -d d="/Users/kordan/Downloads/"
 hash -d KO="/Users/kordan/CodeProject/nodejs/quick-hitter"
-hash -d PKO="/Users/kordan/Practices/nodejs"
+hash -d OWL="/Users/kordan/CodeProject/owl"
 
 alias hls='hash -d'
 
@@ -354,23 +365,23 @@ bindkey "^x^e" expand-cmd-path
 ## recompile zsh files
 src ()
 {
-autoload -U zrecompile
-[ -f ~/.zshrc ] && zrecompile -p ~/.zshrc
-[ -f ~/.zshenv ] && zrecompile -p ~/.zshenv
-[ -f ~/.zcompdump ] && zrecompile -p ~/.zcompdump
-[ -f ~/.zlogin ] && zrecompile -p ~/.zlogin
-[ -f ~/.zlogout ] && zrecompile -p ~/.zlogout
-[ -f ~/.zprofile ] && zrecompile -p ~/.zprofile
-[ -f ~/.zshrc.zwc.old ] && rm -f ~/.zshrc.zwc.old
-[ -f ~/.zshenv.zwc.old ] && rm -f ~/.zshenv.zwc.old
-[ -f ~/.zcompdump.zwc.old ] && rm -f ~/.zcompdump.zwc.old
-[ -f ~/.zlogin.zwc.old ] && rm -f ~/.zlogin.zwc.old
-[ -f ~/.zlogout.zwc.old ] && rm -f ~/.zlogout.zwc.old
-[ -f ~/.zprofile.zwc.old ] && rm -f ~/.zprofile.zwc.old
+    autoload -U zrecompile
+    [ -f ~/.zshrc ] && zrecompile -p ~/.zshrc
+    [ -f ~/.zshenv ] && zrecompile -p ~/.zshenv
+    [ -f ~/.zcompdump ] && zrecompile -p ~/.zcompdump
+    [ -f ~/.zlogin ] && zrecompile -p ~/.zlogin
+    [ -f ~/.zlogout ] && zrecompile -p ~/.zlogout
+    [ -f ~/.zprofile ] && zrecompile -p ~/.zprofile
+    [ -f ~/.zshrc.zwc.old ] && rm -f ~/.zshrc.zwc.old
+    [ -f ~/.zshenv.zwc.old ] && rm -f ~/.zshenv.zwc.old
+    [ -f ~/.zcompdump.zwc.old ] && rm -f ~/.zcompdump.zwc.old
+    [ -f ~/.zlogin.zwc.old ] && rm -f ~/.zlogin.zwc.old
+    [ -f ~/.zlogout.zwc.old ] && rm -f ~/.zlogout.zwc.old
+    [ -f ~/.zprofile.zwc.old ] && rm -f ~/.zprofile.zwc.old
 }
 
 #---------------------------------------------------##
-#                  End of modcarl
+#                  End of Kordan
 #---------------------------------------------------##
 
 
@@ -456,41 +467,41 @@ zstyle ':completion:*:warnings' format $'\e[01;31m -- No Matches Found --\e[0m'
 
 function precmd {
 
-local TERMWIDTH
-(( TERMWIDTH = ${COLUMNS} - 1 ))
+    local TERMWIDTH
+    (( TERMWIDTH = ${COLUMNS} - 1 ))
+    
+    ###
+    # Truncate the path if it's too long.
+    
+    PR_FILLBAR=""
+    PR_PWDLEN=""
+    
+    local promptsize=${#${(%):---(%n@%m)----}}
+    local pwdsize=${#${(%):-%/}}
 
-###
-# Truncate the path if it's too long.
-
-PR_FILLBAR=""
-PR_PWDLEN=""
-
-local promptsize=${#${(%):---(%n@%m)----}}
-local pwdsize=${#${(%):-%/}}
-
-if [[ "$promptsize + $pwdsize" -gt $TERMWIDTH ]]; then
-((PR_PWDLEN=$TERMWIDTH - $promptsize))
-else
-# the width of horizontal prompt bar
-PR_FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $pwdsize)))..${PR_HBAR}.)}"
-fi
-
-###
-# Get APM info.
-
-#if which ibam > /dev/null; then
-#PR_APM_RESULT=`ibam --percentbattery`
-#elif which apm > /dev/null; then
-#PR_APM_RESULT=`apm`
-#fi
+    if [[ "$promptsize + $pwdsize" -gt $TERMWIDTH ]]; then
+    ((PR_PWDLEN=$TERMWIDTH - $promptsize))
+    else
+    # the width of horizontal prompt bar
+    PR_FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $pwdsize)))..${PR_HBAR}.)}"
+    fi
+    
+    ###
+    # Get APM info.
+    
+    #if which ibam > /dev/null; then
+    #PR_APM_RESULT=`ibam --percentbattery`
+    #elif which apm > /dev/null; then
+    #PR_APM_RESULT=`apm`
+    #fi
 }
 
 setopt extended_glob
-preexec () {
-if [[ "$TERM" == "screen" ]]; then
-local CMD=${1[(wr)^(*=*|sudo|-*)]}
-echo -n "\ek$CMD\e\\"
-fi
+    preexec () {
+    if [[ "$TERM" == "screen" ]]; then
+        local CMD=${1[(wr)^(*=*|sudo|-*)]}
+        echo -n "\ek$CMD\e\\"
+    fi
 }
 
 setprompt () {
@@ -532,24 +543,24 @@ PR_URCORNER=${altchar[k]:--}
 # Decide if we need to set titlebar text.
 
 case $TERM in
-xterm*)
-#PR_TITLEBAR=$'%{\e]0;%(!.-=*[ROOT]*=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y\a%}'
-PR_TITLEBAR=''
-;;
-screen)
-PR_TITLEBAR=$'%{\e_screen \005 (\005t) | %(!.-=[ROOT]=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y\e\\%}'
-;;
-*)
-PR_TITLEBAR=''
-;;
+    xterm*)
+        #PR_TITLEBAR=$'%{\e]0;%(!.-=*[ROOT]*=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y\a%}'
+        PR_TITLEBAR=''
+        ;;
+    screen)
+        PR_TITLEBAR=$'%{\e_screen \005 (\005t) | %(!.-=[ROOT]=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y\e\\%}'
+        ;;
+    *)
+        PR_TITLEBAR=''
+        ;;
 esac
 
 ###
 # Decide whether to set a screen title
 if [[ "$TERM" == "screen" ]]; then
-PR_STITLE=$'%{\ekzsh\e\\%}'
+    PR_STITLE=$'%{\ekzsh\e\\%}'
 else
-PR_STITLE=''
+    PR_STITLE=''
 fi
 
 # auto-completion of limited file type
@@ -599,10 +610,12 @@ PR_APM=''
 # Reference: http://pthree.org/2009/03/28/add-vim-editing-mode-to-your-zsh-prompt/
 VIMODE=""
 function zle-keymap-select {
-    VIMODE="${${KEYMAP/vicmd/ v}/(main|viins)/}"
+    VIMODE="${${KEYMAP/vicmd/ [Vim]}/(main|viins)/}"
     local promptsize=${#${(%):---(%n@%m)----}}
     local pwdsize=${#${(%):-%/$VIMODE}}
-    PR_FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $pwdsize - 155)))..${PR_HBAR}.)}"
+    local TERMWIDTH
+    (( TERMWIDTH = ${COLUMNS} - 1 ))
+    PR_FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $pwdsize)))..${PR_HBAR}.)}"
     zle reset-prompt
 }
 zle -N zle-keymap-select
@@ -644,3 +657,4 @@ setprompt
 export PATH="/usr/local/heroku/bin:$PATH"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+

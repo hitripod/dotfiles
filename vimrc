@@ -15,26 +15,25 @@ Bundle 'gmarik/vundle'
 "Bundle 'Valloric/YouCompleteMe'
 Bundle 'kien/ctrlp.vim.git'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
 Bundle 'scrooloose/nerdtree'
 "Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-surround'
 Bundle 'henrik/vim-indexed-search'
 Bundle 'tpope/vim-fugitive'
 Bundle 'ervandew/supertab'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'chazmcgarvey/vimcoder'
+Bundle 'fatih/vim-go'
+Bundle 'majutsushi/tagbar'
+Bundle 'mxw/vim-jsx'
+Bundle 'Yggdroot/indentLine'
 
 " vim-scripts repos
 Bundle 'closetag.vim'
 Bundle 'VisIncr'
-if has("unix") " For environment at work (compiled locally)
-    let Tlist_Ctags_Cmd = "~/mytools/bin/ctags"
-elseif has("win32")
-    let Tlist_Ctags_Cmd="C:/Bin/ctags.exe"
-elseif has("win32unix") " For Cygwin
-    let Tlist_Ctags_Cmd="/usr/bin/ctags"
-endif
 Bundle 'ctags.vim'
 Bundle 'cscope.vim'
-Bundle 'taglist.vim'
 Bundle 'jelera/vim-javascript-syntax'
 
 " non github repos
@@ -54,11 +53,11 @@ filetype plugin indent on     " required!
 "                           General Settings
 "--------------------------------------------------------------------------- 
 if filereadable($VIMRUNTIME . "/vimrc_example.vim")
- so $VIMRUNTIME/vimrc_example.vim
+  so $VIMRUNTIME/vimrc_example.vim
 endif
 
 if filereadable($VIMRUNTIME . "/macros/matchit.vim")
- so $VIMRUNTIME/macros/matchit.vim
+  so $VIMRUNTIME/macros/matchit.vim
 endif
 
 if has("gui_running")   " GUI color and font settings
@@ -67,6 +66,7 @@ if has("gui_running")   " GUI color and font settings
   set cursorline        " highlight current line
 else
 " terminal color settings
+  set cursorline        " highlight current line
 endif      
 
 set cindent
@@ -189,6 +189,10 @@ augroup END
 autocmd BufRead,BufNewFile *.py syntax on
 autocmd BufRead,BufNewFile *.py set ai
 autocmd BufRead *.py set smartindent
+autocmd BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
+autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+autocmd BufRead,BufNewFile *.py nmap <F5> :w<CR>:!python %<CR>
+
 set cinwords=if,elif,else,for,while,with,try,except,finally,def,class
 
 au FileType python setl autoindent tabstop=4 expandtab shiftwidth=4 softtabstop=4
@@ -204,24 +208,25 @@ au BufRead,BufNewFile *.fx set makeprg=javafxc\ -encoding\ utf8\ %
 au BufRead,BufNewFile *.{c,cpp,java,fx} nmap <F5> :w<CR>:make<CR>
 au BufRead,BufNewFile *.{c,cpp,java,fx} nmap <F6> :! ./%<<CR>
 au BufNewFile,BufReadPost *.rs  set filetype=c 
+au BufRead,BufNewFile *.jsx  setl expandtab shiftwidth=2 softtabstop=2
 
-func CodeFormat()
-          " get the line number of current cursor
-          let lineNum = line(".")
-          let option_s = "%! astyle -taCSKNwYm0Uxk3"
-          if &filetype == 'c'
-                    exec option_s." --mode=c"
-          elseif &filetype == 'cpp'
-                    exec option_s." --mode=c"
-          elseif &filetype == 'java'
-                    exec option_s." --mode=java"
-          else 
-                    echo "CodeFormat doesn't support ".&filetype." filetype."
-          endif
-          " return to the line where cursor was
-          exec lineNum
-endfunc
-map <S-F> <Esc>:call CodeFormat()<CR>  
+"func CodeFormat()
+"          " get the line number of current cursor
+"          let lineNum = line(".")
+"          let option_s = "%! astyle -taCSKNwYm0Uxk3"
+"          if &filetype == 'c'
+"                    exec option_s." --mode=c"
+"          elseif &filetype == 'cpp'
+"                    exec option_s." --mode=c"
+"          elseif &filetype == 'java'
+"                    exec option_s." --mode=java"
+"          else 
+"                    echo "CodeFormat doesn't support ".&filetype." filetype."
+"          endif
+"          " return to the line where cursor was
+"          exec lineNum
+"endfunc
+"map <S-F> <Esc>:call CodeFormat()<CR>  
 
 "--------------------------------------------------------------------------- 
 " USEFUL SHORTCUTS
@@ -316,7 +321,7 @@ cmap cd. lcd %:p:h
 
 "------------------ self-defined(Kordan Ou) keymap ------------------
 let mapleader=','
-noremap <F1> <Esc>:Tlist<Enter>
+noremap <F1> <Esc>:TagbarToggle<Enter>
 noremap <F2> <Esc>:NERDTreeToggle<Enter>
 
 " tab navigation like firefox
@@ -436,7 +441,7 @@ let g:SuperTabDefaultCompletionType = "context"
 " --- Yank Ring 
 nmap <Leader>l :YRShow<CR>
 " --- Ctrl-P
-nmap <Leader>t <c-p>
+nmap <Leader>t :CtrlP ./<CR>
 
 "colors 256-jungle
 set t_Co=16 "Force it to be a 16 color terminal like a linux console
