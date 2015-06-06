@@ -6,24 +6,24 @@ Author: Kordan Ou
 Installing your Vim environment on another machine
 --------------------------------------------------
 
-1. Check Out from Github
+1. Check Out `.vim` and `Vundle` from Github
 
-        $ cd ~
-        $ git clone http://github.com/hitripod/vimrc.git ~/.vim
-        $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
-        $ cd ~/.vim
+        cd ~
+        git clone https://github.com/hitripod/vimrc.git ~/.vim
+        git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+        cd ~/.vim
 
-2. Check out [Vundle] to mangage the plugins.
+2. Make the symbolic links
 
-        $ ln -s ~/.vim/vimrc ~/.vimrc
-        $ ln -s ~/.vim/gvimrc ~/.gvimrc
-        $ ln -s ~/.vim/zshrc ~/.zshrc
-        $ ln -s ~/.vim/gitconfig ~/.gitconfig
+        ln -s ~/.vim/vimrc ~/.vimrc
+        ln -s ~/.vim/gvimrc ~/.gvimrc
+        ln -s ~/.vim/zshrc ~/.zshrc
+        ln -s ~/.vim/gitconfig ~/.gitconfig
 
 3. Initilize and update those plugins using Vundle
 
-        $ vim 
-        And enter `:BundleInstall`
+        vim
+        And enter `:PluginInstall`
 
 PLUGINS
 -------

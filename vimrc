@@ -5,39 +5,38 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc("~/.vim/bundle/vundle")
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 
 " let Vundle manage Vundle (required)
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " original repos on github
-"Bundle 'Valloric/YouCompleteMe'
-Bundle 'kien/ctrlp.vim.git'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'bling/vim-airline'
-Bundle 'scrooloose/nerdtree'
-"Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-surround'
-Bundle 'henrik/vim-indexed-search'
-Bundle 'tpope/vim-fugitive'
-Bundle 'ervandew/supertab'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'chazmcgarvey/vimcoder'
-Bundle 'fatih/vim-go'
-Bundle 'majutsushi/tagbar'
-Bundle 'mxw/vim-jsx'
-Bundle 'Yggdroot/indentLine'
+Plugin 'kien/ctrlp.vim.git'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'bling/vim-airline'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-surround'
+Plugin 'henrik/vim-indexed-search'
+Plugin 'tpope/vim-fugitive'
+Plugin 'ervandew/supertab'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'chazmcgarvey/vimcoder'
+Plugin 'fatih/vim-go'
+Plugin 'majutsushi/tagbar'
+Plugin 'mxw/vim-jsx'
+Plugin 'Yggdroot/indentLine'
 
 " vim-scripts repos
-Bundle 'closetag.vim'
-Bundle 'VisIncr'
-Bundle 'ctags.vim'
-Bundle 'cscope.vim'
-Bundle 'jelera/vim-javascript-syntax'
+Plugin 'closetag.vim'
+Plugin 'VisIncr'
+Plugin 'ctags.vim'
+Plugin 'cscope.vim'
+Plugin 'jelera/vim-javascript-syntax'
 
 " non github repos
 
+call vundle#end()
 filetype plugin indent on     " required!
  "
  " Brief help
