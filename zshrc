@@ -117,11 +117,11 @@ fi
 #                      Kordan 
 #---------------------------------------------------##
 
-bindkey '^[[H'  beginning-of-line
-bindkey '^[[F'  end-of-line
+bindkey '\e[H'  beginning-of-line
+bindkey '\e[F'  end-of-line
 bindkey "\e[3~" delete-char
-bindkey '^[[B'  history-beginning-search-forward
-bindkey '^[[A'  history-beginning-search-backward
+bindkey '\e[B'  history-beginning-search-forward
+bindkey '\e[A'  history-beginning-search-backward
 
 autoload -U colors && colors
 #echo "$fg_bold[red]zsh $fg_no_bold[white]is $bg[blue]$fg_bold[green]nice"
@@ -150,6 +150,8 @@ my_accounts=(
     ubuntu@54.200.200.66
     root@61.164.125.234
     vm-0.kordan.koding.kd.io
+    {root,kordan}@112.121.87.201
+    {root,kordan}@112.121.87.202
 )
 
 zstyle ':completion:*:my-accounts' users-hosts $my_accounts
@@ -657,4 +659,3 @@ setprompt
 export PATH="/usr/local/heroku/bin:$PATH"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-

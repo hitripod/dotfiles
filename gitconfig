@@ -47,7 +47,7 @@
     name = "Keep ours merge"
     driver = true
 [core]
-	autocrlf = true
+	autocrlf = false
 	whitespace = nowarn
 [receive]
 	denyDeleteCurrent = ignore
