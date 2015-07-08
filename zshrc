@@ -1,8 +1,8 @@
 # for building Android
 ulimit -S -n 1024
 
-export GOPATH=$HOME/go
-export PATH="/usr/local/bin:/opt/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/X10R6/bin:/usr/local/jdk1.6.0_07/bin:/sw/bin:$HOME/android-sdk-mac_x86/platform-tools:$HOME/bin/binutils/bin:$HOME/bin:$HOME/llvm-2.8/bin:/usr/local/texlive/2010basic/bin:/Users/kordan/bin/python-client:/usr/local/texlive/2010/bin/x86_64-darwin:/usr/local/Cellar/ruby/1.9.2-p290/bin:/Developer/usr/bin:$HOME/.rvm/gems/ruby-2.0.0-p247@rails-4.0.0/bin:$GOPATH"
+export GOPATH="$HOME/go:/Users/kordan/CodeProject/owl/open-falcon"
+export PATH="/usr/local/bin:/opt/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/X10R6/bin:/usr/local/jdk1.6.0_07/bin:/sw/bin:$HOME/android-sdk-mac_x86/platform-tools:$HOME/bin/binutils/bin:$HOME/bin:$HOME/llvm-2.8/bin:/usr/local/texlive/2010basic/bin:/Users/kordan/bin/python-client:/usr/local/texlive/2010/bin/x86_64-darwin:/usr/local/Cellar/ruby/1.9.2-p290/bin:/Developer/usr/bin:$HOME/.rvm/gems/ruby-2.0.0-p247@rails-4.0.0/bin:$GOPATH:$GOPATH/bin"
 export EDITOR=vim
 export LANG=en_US.UTF-8
 
@@ -148,7 +148,18 @@ my_accounts=(
     kordan@106.185.45.32
     root@h.hitripod.com
     ubuntu@54.200.200.66
+
+    root@61.164.125.227
+    root@61.164.125.228
+    root@61.164.125.230
+    root@61.164.125.233
     root@61.164.125.234
+    root@61.164.125.235
+    root@61.164.125.241
+    root@61.164.125.244
+    root@61.164.125.246
+    root@61.164.125.252
+
     vm-0.kordan.koding.kd.io
     {root,kordan}@112.121.87.201
     {root,kordan}@112.121.87.202
@@ -184,6 +195,14 @@ gg () {
         grep -rIn --color $* ./* --ignore-case --exclude=tags --exclude="*.min.js" --exclude="*.min.css" --exclude="*bootstrap.js"\
             --exclude="*.min.map"
     #fi
+}
+
+gr () {
+    if [ $# -ne 2 ]; then
+        echo "gr [text to grep] [perl rex pattern]"
+    else
+        grep -r -l $1 .|sort|uniq|gxargs perl -e $2 -pi
+    fi
 }
 
 # ff x find file named x

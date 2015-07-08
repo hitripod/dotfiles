@@ -320,8 +320,8 @@ cmap cd. lcd %:p:h
 
 "------------------ self-defined(Kordan Ou) keymap ------------------
 let mapleader=','
-noremap <F1> <Esc>:TagbarToggle<Enter>
-noremap <F2> <Esc>:NERDTreeToggle<Enter>
+noremap <F1> <Esc>:NERDTreeToggle<Enter>
+noremap <F2> <Esc>:TagbarToggle<Enter>
 
 " tab navigation like firefox
 nnoremap <C-S-tab> :tabprevious<CR>
@@ -444,3 +444,44 @@ nmap <Leader>t :CtrlP ./<CR>
 
 "colors 256-jungle
 set t_Co=16 "Force it to be a 16 color terminal like a linux console
+
+
+" To fix the warning: 'Your ctags and Tagbar configurations are out of sync'
+"let g:tagbar_type_javascript = {
+"    \ 'ctagstype' : 'JavaScript',
+"    \ 'kinds'     : [
+"        \ 'o:objects',
+"        \ 'f:functions',
+"        \ 'a:arrays',
+"        \ 's:strings'
+"    \ ]
+"\ }
+"
+"
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+    \ }
