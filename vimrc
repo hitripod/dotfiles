@@ -26,6 +26,8 @@ Plugin 'fatih/vim-go'
 Plugin 'majutsushi/tagbar'
 Plugin 'mxw/vim-jsx'
 Plugin 'Yggdroot/indentLine'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'markcornick/vim-vagrant'
 
 " vim-scripts repos
 Plugin 'closetag.vim'

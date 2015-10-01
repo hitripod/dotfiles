@@ -95,11 +95,20 @@ EOF
     hideDesktop () {
         if [ $1 = "yes" ]; then
             defaults write com.apple.finder CreateDesktop -bool FALSE; killall Finder;
-        else if [ $1 = "no" ]; then
+        elif [ $1 = "no" ]; then
             defaults write com.apple.finder CreateDesktop -bool TRUE; killall Finder;
         else
             echo "Usage: hideDesktop yes|no" 
-        fi fi
+        fi
+    }
+
+    sshp() {
+        if [ $1 = "fwdisk" ]; then
+            ssh -t -p 12321 xiecz@211.152.9.188 "sudo ssh -p12321 157.122.99.72"
+        elif [ $1 = "no" ]; then
+        else
+            echo "Usage: sshp [fwdisk]" 
+        fi
     }
 
     ### Init the environment setting of docker-machine
@@ -168,6 +177,8 @@ my_accounts=(
     root@61.164.125.244
     root@61.164.125.246
     root@61.164.125.252
+    
+    xiecz@211.152.9.188
 
     vm-0.kordan.koding.kd.io
     {root,kordan}@112.121.87.201
@@ -229,13 +240,13 @@ wordcount () {
 setip () {
     if [ $1 = "list" ]; then
         echo "lab, dhcp"
-    else if [ $1 = "lab" ]; then
+    elif [ $1 = "lab" ]; then
         networksetup -setmanual Ethernet 140.112.29.202 255.255.255.0 140.112.29.254
-    else if [ $1 = "dhcp" ]; then
+    elif [ $1 = "dhcp" ]; then
         networksetup -setdhcp Ethernet
     else
         echo "Usage: setip [list|lab|dhcp]" 
-    fi fi fi 
+    fi
 }
 
 
@@ -248,17 +259,17 @@ abs () {
 adbi () {
     if [ $1 = "start-server" ]; then
         tcprelay.py -t 22:2222 & 
-    else if [ $1 = "kill-server" ]; then
+    elif [ $1 = "kill-server" ]; then
         kill `ps -ax|grep tcprelay|awk '{print $1}'`
-    else if [ $1 = "shell" ]; then
+    elif [ $1 = "shell" ]; then
         ssh root@localhost -p2222
-    else if [ $1 = "push" ]; then
+    elif [ $1 = "push" ]; then
         echo "not implemented yet"
-    else if [ $1 = "pull" ]; then
+    elif [ $1 = "pull" ]; then
         echo "not implemented yet"
     else
         echo "usage: start-server, kill-server, shell"
-    fi fi fi fi fi
+    fi 
 }
 
 upload() {
@@ -298,7 +309,7 @@ hash -d RSI="$AND_HOME/out/target/product/passion/obj/libRS_intermediates"
 hash -d P="/Users/kordan/Dropbox/Career/Research/Latex/Template 拷貝/RenderScript-paper"
 hash -d d="/Users/kordan/Downloads/"
 hash -d KO="/Users/kordan/CodeProject/nodejs/quick-hitter"
-hash -d OWL="/Users/kordan/CodeProject/owl"
+hash -d OWL="/Users/kordan/CodeProject/owl/open-falcon"
 
 alias hls='hash -d'
 
@@ -471,8 +482,8 @@ zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 #bindkey -M menuselect '^M' .accept-line
 
-compdef pkill=kill
-compdef pkill=killall
+#compdef pkill=kill
+#compdef pkill=killall
 zstyle ':completion:*:*:kill:*' menu yes select interactive
 zstyle ':completion:*:kill:*'   force-list always
 zstyle ':completion:*:processes' command 'ps -au$USER'
