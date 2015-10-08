@@ -129,6 +129,7 @@ EOF
 elif [[ $UNAME == "Linux" ]]
 then
    alias ls='ls --color=auto'
+   alias vi='vim'
 fi
 
 #---------------------------------------------------##
