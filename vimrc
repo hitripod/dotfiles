@@ -28,6 +28,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'Yggdroot/indentLine'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'markcornick/vim-vagrant'
+Plugin 'maksimr/vim-jsbeautify'
 
 " vim-scripts repos
 Plugin 'closetag.vim'
@@ -197,6 +198,12 @@ autocmd BufRead,BufNewFile *.py nmap <F5> :w<CR>:!python %<CR>
 set cinwords=if,elif,else,for,while,with,try,except,finally,def,class
 
 au FileType python setl autoindent tabstop=4 expandtab shiftwidth=4 softtabstop=4
+
+"------------------------ For HTML/Javascript/CSS -----------------------"
+autocmd FileType javascript noremap <buffer>  <leader>f :call JsBeautify()<cr>
+autocmd FileType html noremap <buffer> <leader>f :call HtmlBeautify()<cr>
+autocmd FileType css noremap <buffer> <leader>f :call CSSBeautify()<cr>
+
 "------------------------------------------------------------------------"
 
 let g:acp_completeOption='.,w,b,u,t,i,k'
