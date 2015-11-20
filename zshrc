@@ -104,7 +104,11 @@ EOF
 
     sshp() {
         if [ $1 = "fwdisk" ]; then
-            ssh -t -p 12321 xiecz@211.152.9.188 "sudo ssh -p12321 157.122.99.72"
+            ssh -t -p 12321 ouyw@211.152.9.188 "sudo ssh -p12321 157.122.99.72"
+        elif [ $1 = "ssd1" ]; then
+            ssh -t -p 12321 ouyw@211.152.9.188 "sudo ssh -p12321 118.26.224.145"
+        elif [ $1 = "ssd2" ]; then
+            ssh -t -p 12321 ouyw@211.152.9.188 "sudo ssh -p12321 118.26.224.146"
         elif [ $1 = "no" ]; then
         else
             echo "Usage: sshp [fwdisk]" 
@@ -179,7 +183,7 @@ my_accounts=(
     root@61.164.125.246
     root@61.164.125.252
     
-    xiecz@211.152.9.188
+    ouyw@211.152.9.188
 
     vm-0.kordan.koding.kd.io
     {root,kordan}@112.121.87.201
@@ -206,7 +210,7 @@ gg () {
     #    grep -rIn --color "$1" "$2" --ignore-case --exclude=tags --exclude=react-bootstrap.min.js
     #else
         grep -rIn --color $* ./* --ignore-case --exclude=tags --exclude="*.min.js" --exclude="*.min.css" --exclude="*bootstrap.js"\
-            --exclude="*.min.map"
+            --exclude="*.min.map" --exclude-dir=node_modules --exclude-dir=dist 
     #fi
 }
 

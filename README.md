@@ -12,12 +12,14 @@ Installing your Vim environment on another machine
         git clone https://github.com/hitripod/vimrc.git ~/.vim
         git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
         cd ~/.vim
+        sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
 2. Make the symbolic links
 
         ln -s ~/.vim/vimrc ~/.vimrc
         ln -s ~/.vim/gvimrc ~/.gvimrc
-        ln -s ~/.vim/zshrc ~/.zshrc
+        ln -s ~/.vim/oh-my-zsh.zshrc ~/.zshrc
+        ln -s ~/.vim/zshrc ~/.oh-my-zsh/custom/kordan.zsh
         ln -s ~/.vim/gitconfig ~/.gitconfig
 
 3. Initilize and update those plugins using Vundle
