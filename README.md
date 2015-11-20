@@ -20,6 +20,7 @@ Installing your Vim environment on another machine
         ln -s ~/.vim/gvimrc ~/.gvimrc
         ln -s ~/.vim/oh-my-zsh.zshrc ~/.zshrc
         ln -s ~/.vim/zshrc ~/.oh-my-zsh/custom/kordan.zsh
+        ln -s ~/.vim/key-bindings.zsh /Users/kordan/.oh-my-zsh/custom/lib/key-bindings.zsh
         ln -s ~/.vim/gitconfig ~/.gitconfig
 
 3. Initilize and update those plugins using Vundle
