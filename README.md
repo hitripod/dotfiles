@@ -1,32 +1,40 @@
-Kordan's vimrc
+Kordan's dotfiles
 ==============
-Author: Kordan Ou 
 (This vimrc is largly by courtesy of vgod's vimrc)
 
-Installing your Vim environment on another machine
+Prerequisites
+-------------
+
+- Vundle
+- oh-my-zsh
+- autojump
+- zsh-autosuggestions
+
+
+Installation
 --------------------------------------------------
 
-1. Check Out `.vim` and `Vundle` from Github
+```bash
+# Check out the prerequisites
+cd ~
+git clone https://github.com/hitripod/vimrc.git ~/.vim
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+git clone git://github.com/tarruda/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+git clone git://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
+cd ~/.vim
+sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
-        cd ~
-        git clone https://github.com/hitripod/vimrc.git ~/.vim
-        git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-        cd ~/.vim
-        sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+# Make the symbolic links
+ln -s ~/.vim/vimrc ~/.vimrc
+ln -s ~/.vim/gvimrc ~/.gvimrc
+ln -s ~/.vim/oh-my-zsh.zshrc ~/.zshrc
+ln -s ~/.vim/zshrc ~/.oh-my-zsh/custom/kordan.zsh
+ln -s ~/.vim/key-bindings.zsh /Users/kordan/.oh-my-zsh/custom/lib/key-bindings.zsh
+ln -s ~/.vim/gitconfig ~/.gitconfig
 
-2. Make the symbolic links
-
-        ln -s ~/.vim/vimrc ~/.vimrc
-        ln -s ~/.vim/gvimrc ~/.gvimrc
-        ln -s ~/.vim/oh-my-zsh.zshrc ~/.zshrc
-        ln -s ~/.vim/zshrc ~/.oh-my-zsh/custom/kordan.zsh
-        ln -s ~/.vim/key-bindings.zsh /Users/kordan/.oh-my-zsh/custom/lib/key-bindings.zsh
-        ln -s ~/.vim/gitconfig ~/.gitconfig
-
-3. Initilize and update those plugins using Vundle
-
-        vim
-        And enter `:PluginInstall`
+# Initilize and update those plugins using Vundle
+vim +PluginInstall +qall
+```
 
 PLUGINS
 -------
@@ -86,5 +94,6 @@ Other good references
 
 * http://blog.vgod.tw/2011/03/19/vimrc/?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+vgod%2Fblog+%28vgod%27s+blog%29&utm_content=Google+Reader
 * http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/
+* http://macshuo.com/?p=676
 
-[Vundle]: https://github.com/gmarik/vundle
+

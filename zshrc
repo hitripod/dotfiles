@@ -30,6 +30,7 @@ then
     alias clang='xcrun clang --sysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/'
     alias clang++='xcrun clang++ --sysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/'
     alias wedding='rsync -avz -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress ~/Desktop/wedding_day-pack modcarl@troup.dreamhost.com:/home/modcarl/hitripod.com/public/marriage/20140920/'
+    alias mtr='sudo mtr'
 
     # Safe delete
     del() {
@@ -224,7 +225,7 @@ gr () {
 
 # ff x find file named x
 ff () {
-    find . -name $1 -print
+    find . -name "*$1*" -print
 }
 
 # files x => list files in x
@@ -330,6 +331,7 @@ autoload -U compinit
 compinit -C
 ## completions ####
 autoload -U zstyle+
+setopt menu_complete
 ## General completion technique
 ## complete as much u can ..
 zstyle ':completion:*' completer _complete _list _oldlist _expand _ignored _match _approximate _prefix #_correct
@@ -695,3 +697,16 @@ setprompt
 export PATH="/usr/local/heroku/bin:$PATH"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+
+### Enable zsh-autosuggestions
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Load zsh-autosuggestions.
+source ~/.zsh/zsh-autosuggestions/autosuggestions.zsh
+
+# Enable autosuggestions automatically.
+zle-line-init() { zle autosuggest-start }
+zle -N zle-line-init
+# accept the suggestion and execute it.
+bindkey '^f' autosuggest-execute-suggestion
