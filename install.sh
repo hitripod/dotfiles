@@ -1,18 +1,34 @@
-#!/bin/bash
-git submodule add http://github.com/tpope/vim-fugitive.git bundle/fugitive &&
-git submodule add http://github.com/tpope/vim-pathogen bundle/vim-pathogen &&
-git submodule add http://github.com/sukima/xmledit bundle/xmledit &&
-git submodule add https://github.com/wincent/Command-T.git bundle/command-t &&
-git submodule add http://github.com/ervandew/supertab bundle/supertab &&
-git submodule add https://github.com/msanders/snipmate.vim bundle/snipMate &&
-git submodule add https://github.com/chrismetcalf/vim-yankring.git bundle/yankring &&
-git submodule add https://github.com/vim-scripts/VisIncr.git bundle/VisIncr &&
-git submodule add https://github.com/Twinside/vim-cuteErrorMarker bundle/cuteErrorMarker &&
-git submodule add git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex bundle/vim-latex &&
-git submodule add https://github.com/MasterKey/OmniCppComplete.git bundle/OmniCppComplete &&
-git submodule add https://github.com/vim-scripts/javacomplete.git bundle/javacomplete &&
-git submodule add https://github.com/Rip-Rip/clang_complete.git bundle/clang_complete &&
-git submodule add https://github.com/scrooloose/nerdtree.git bundle/NerdTree &&
-git submodule add https://github.com/mexpolk/vim-taglist.git bundle/taglist &&
-git submodule add https://github.com/henrik/vim-indexed-search.git bundle/IndexedSearch &&
-git submodule add https://github.com/kevinw/pyflakes-vim.git bundle/pyflakes 
+#!/bin/sh
+VIMHOME=~/.vim
+
+warn() {
+    echo "$1" >&2
+}
+
+die() {
+    warn "$1"
+    exit 1
+}
+
+[ -e "$VIMHOME/vimrc" ] && die "$VIMHOME/vimrc already exists."
+[ -e "~/.vim" ] && die "~/.vim already exists."
+[ -e "~/.vimrc" ] && die "~/.vimrc already exists."
+
+# Check out the prerequisites
+git clone https://github.com/hitripod/dotfiles.git ~/.vim
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+git clone git://github.com/tarruda/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+git clone git://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
+sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+
+# Make the symbolic links
+ln -s ~/.vim/vimrc ~/.vimrc
+ln -s ~/.vim/gvimrc ~/.gvimrc
+ln -s ~/.vim/oh-my-zsh.zshrc ~/.zshrc
+ln -s ~/.vim/zshrc ~/.oh-my-zsh/custom/kordan.zsh
+ln -s ~/.vim/key-bindings.zsh /Users/kordan/.oh-my-zsh/custom/lib/key-bindings.zsh
+ln -s ~/.vim/gitconfig ~/.gitconfig
+
+# Initilize and update those plugins using Vundle
+vim +PluginInstall +qall
+echo "Kordan's dotfile is installed."
