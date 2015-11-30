@@ -29,6 +29,7 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'markcornick/vim-vagrant'
 Plugin 'maksimr/vim-jsbeautify'
+Plugin 'mattn/emmet-vim'
 
 " vim-scripts repos
 Plugin 'closetag.vim'

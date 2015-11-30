@@ -87,6 +87,10 @@ Execute `cscope -bqR && ctags -R *` at your project root.
 * `<leader>fi`: Find files #including this file
 * `<leader>l` : call ToggleLocationList()
 
+### [Emmet](https://github.com/mattn/emmet-vim)
+
+`<C-y>,` to expand the abbreviation. [More Tutorials](https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL)
+
 ### Shortcuts
 
 * `<leader>p` to toggle paste mode.
