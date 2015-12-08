@@ -29,9 +29,9 @@ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install
 # Make the symbolic links
 ln -s ~/.vim/vimrc ~/.vimrc
 ln -s ~/.vim/gvimrc ~/.gvimrc
-ln -s ~/.vim/zsh/oh-my-zsh.zshrc ~/.zshrc
+rm -rf ~/.zshrc && ln -s ~/.vim/zsh/oh-my-zsh.zshrc ~/.zshrc
 ln -s ~/.vim/zsh/zshrc ~/.oh-my-zsh/custom/kordan.zsh
-ln -s ~/.vim/zsh/key-bindings.zsh ~/.oh-my-zsh/custom/lib/key-bindings.zsh
+mkdir -p ~/.oh-my-zsh/custom/lib && ln -s ~/.vim/zsh/key-bindings.zsh ~/.oh-my-zsh/custom/lib/key-bindings.zsh
 ln -s ~/.vim/git/gitconfig ~/.gitconfig
 
 # Initilize and update those plugins using Vundle

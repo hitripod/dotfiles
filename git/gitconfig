@@ -58,3 +58,5 @@
 [http]
 	sslVerify = false
 	sslCAInfo = /c/Users/Kordan/Dropbox/Realtek/Documents/NAN/Sigma/cert.pem
+[color]
+	ui = true
