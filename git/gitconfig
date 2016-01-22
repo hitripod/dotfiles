@@ -1,5 +1,3 @@
-[gui]
-	recentrepo = C:/Program Files (x86)/Vim/vim72/新增資料
 [user]
 	email = kordan@hitripod.com
 	name = Kordan Ou
@@ -30,33 +28,17 @@
     usub    = "submodule foreach --recursive git pull --rebase origin master"
     pushnan    = "push bitbucket feature-NAN"
     pullnan    = "pull --rebase bitbucket feature-NAN"
-[difftool "araxis"]
-    path = "/c/Program Files/Araxis/Araxis Merge/compare.exe"
-    renames = true
-    trustExitCode = true
 [diff]
     tool = araxis
     stat = true
-[mergetool "araxis"]
-    path = C:\\Program Files\\Araxis\\Araxis Merge\\compare.exe
-    keepBackup = false
-[merge]
-	tool = araxis
-    #stat = true
 [merge "ours"]
     name = "Keep ours merge"
     driver = true
 [core]
 	autocrlf = false
 	whitespace = nowarn
+	editor = vim
 [receive]
 	denyDeleteCurrent = ignore
-[credential]
-	helper = !'C:\\Users\\Kordan\\AppData\\Roaming\\GitCredStore\\git-credential-winstore.exe'
-[mergetool "p4merge"]
-	path = C:\\Program Files\\Perforce\\p4merge.exe
-[http]
-	sslVerify = false
-	sslCAInfo = /c/Users/Kordan/Dropbox/Realtek/Documents/NAN/Sigma/cert.pem
 [color]
 	ui = true
