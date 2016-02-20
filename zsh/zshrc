@@ -120,7 +120,7 @@ EOF
     }
 
     ### Init the environment setting of docker-machine
-    eval $(docker-machine env dev)
+    eval $(docker-machine env default)
 
     export LS_COLORS="no=00:fi=00:di=01;37:ln=01;36:\ 
     #pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:\ 

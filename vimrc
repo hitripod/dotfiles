@@ -30,6 +30,9 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'markcornick/vim-vagrant'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'mattn/emmet-vim'
+Plugin 'kylef/apiblueprint.vim'
+Plugin 'dzeban/vim-log-syntax'
+Plugin 'altercation/vim-colors-solarized'
 
 " vim-scripts repos
 Plugin 'closetag.vim'
@@ -294,12 +297,16 @@ nmap <leader>n :set nu!<BAR>set nu?<CR>
 " Replace the word with yanked text
 nmap <silent> cp "_cw<C-R>"<Esc>
 
+" Vim 7.4 hybrid mode of relative/absolute
+set relativenumber
+set number
+
 " ,<UP> for the next gtags's search result entry
 "nmap <leader><UP> :cp<CR>
 "nmap <leader><DOWN> :cn<CR>
 
 " Find definition of current symbol using Gtags
-map <C-?> <esc>:Gtags -r <CR>
+"map <C-?> <esc>:Gtags -r <CR>
 " To locate symbols which are not defined in GTAGS
 map <C-S> <esc>:Gtags -s <CR><CR><C-W>t<C-W>10\<
 
@@ -351,6 +358,7 @@ nnoremap <A-F8> 8gt
 nnoremap <A-F9> 9gt
 nnoremap <A-F0> 10gt
 
+nnoremap <leader>m :silent !open '%:p'<cr>
 
 " convert binary to hex
 map <Leader>hon :%!xxd<CR> 
