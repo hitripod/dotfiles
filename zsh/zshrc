@@ -649,12 +649,16 @@ PR_APM=''
 
 ###
 # Finally, the prompt.
-
+#
+# ZSH uses the KEYTIMEOUT parameter to determine how long to wait (in hundredths of a second) 
+# for additional characters in sequence. Default is 0.4 seconds.
+KEYTIMEOUT=1 # 10ms
 # If I am using vi keys, I want to know what mode I'm currently using.
 # zle-keymap-select is executed every time KEYMAP changes.
 # From http://zshwiki.org/home/examples/zlewidgets
 # When using the VIM mode, reset the prompt.
 # Reference: http://pthree.org/2009/03/28/add-vim-editing-mode-to-your-zsh-prompt/
+
 VIMODE=""
 function zle-keymap-select {
     VIMODE="${${KEYMAP/vicmd/ [Vim]}/(main|viins)/}"
