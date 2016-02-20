@@ -10,9 +10,9 @@ die() {
     exit 1
 }
 
-[ -e "$VIMHOME/vimrc" ] && die "$VIMHOME/vimrc already exists."
-[ -e "~/.vim" ] && die "~/.vim already exists."
-[ -e "~/.vimrc" ] && die "~/.vimrc already exists."
+[ -e "$VIMHOME/vimrc" ]                 && die "Kordan's dotfiles is already installed."
+[ -f "~/.vim" ] && [ ! -L "~/.vim" ]    && die "~/.vim already exists."
+[ -f "~/.vimrc"] && [ ! -L "~/.vimrc" ] && die "~/.vimrc already exists."
 
 # Check out the prerequisites
 git clone https://github.com/hitripod/dotfiles.git ~/.vim
@@ -22,12 +22,12 @@ git clone git://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-h
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
 # Make the symbolic links
-ln -s ~/.vim/vimrc ~/.vimrc
-ln -s ~/.vim/gvimrc ~/.gvimrc
+ln -sf ~/.vim/vimrc ~/.vimrc ||
+ln -sf ~/.vim/gvimrc ~/.gvimrc
 rm -rf ~/.zshrc && ln -s ~/.vim/zsh/oh-my-zsh.zshrc ~/.zshrc 
-ln -s ~/.vim/zsh/zshrc ~/.oh-my-zsh/custom/kordan.zsh
-mkdir -p ~/.oh-my-zsh/custom/lib && ln -s ~/.vim/zsh/key-bindings.zsh ~/.oh-my-zsh/custom/lib/key-bindings.zsh
-ln -s ~/.vim/git/gitconfig ~/.gitconfig
+ln -sf ~/.vim/zsh/zshrc ~/.oh-my-zsh/custom/kordan.zsh
+mkdir -p ~/.oh-my-zsh/custom/lib && ln -sf ~/.vim/zsh/key-bindings.zsh ~/.oh-my-zsh/custom/lib/key-bindings.zsh
+ln -sf ~/.vim/git/gitconfig ~/.gitconfig
 
 # Initilize and update those plugins using Vundle
 vim +PluginInstall +qall
