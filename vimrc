@@ -99,7 +99,6 @@ set viminfo='20,\"50    " read/write a .viminfo file, don't store more than 50 l
 set history=50          " keep 50 lines of command line history
 set ruler               " show the cursor position all the time
 set dictionary=~/.dict  " my dictionary :p
-"set t_Co=8              " number of colors
 set showcmd             " show command
 set incsearch           " While typing a search pattern, show immediately where the so far typed pattern matches.
 set hlsearch            " When there is a previous search pattern, highlight all its matches.
@@ -460,22 +459,7 @@ nmap <Leader>l :YRShow<CR>
 " --- Ctrl-P
 nmap <Leader>t :CtrlP ./<CR>
 
-"colors 256-jungle
-"set t_Co=16 "Force it to be a 16 color terminal like a linux console
 
-
-" To fix the warning: 'Your ctags and Tagbar configurations are out of sync'
-"let g:tagbar_type_javascript = {
-"    \ 'ctagstype' : 'JavaScript',
-"    \ 'kinds'     : [
-"        \ 'o:objects',
-"        \ 'f:functions',
-"        \ 'a:arrays',
-"        \ 's:strings'
-"    \ ]
-"\ }
-"
-"
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
     \ 'kinds'     : [
@@ -507,6 +491,4 @@ let g:tagbar_type_go = {
 
 
 set background=dark
-" If you don't want to be degraded to 256-color, use the custom solarized them for iTerm2
-let g:solarized_termcolors=256 
 colorscheme solarized
