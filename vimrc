@@ -32,7 +32,6 @@ Plugin 'maksimr/vim-jsbeautify'
 Plugin 'mattn/emmet-vim'
 Plugin 'kylef/apiblueprint.vim'
 Plugin 'dzeban/vim-log-syntax'
-Plugin 'altercation/vim-colors-solarized'
 
 " vim-scripts repos
 Plugin 'closetag.vim'
