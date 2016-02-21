@@ -292,7 +292,7 @@ cnoremap <C-K>      <C-U>
 " ,p toggles paste mode
 nmap <leader>p :set paste!<BAR>set paste?<CR>
 " ,n toggles line number
-nmap <leader>n :set nu!<BAR>set nu?<CR>
+nmap <leader>n :set nu!<CR>:set rnu!<BAR>set nu?<CR>:set rnu?<CR>
 " Replace the word with yanked text
 nmap <silent> cp "_cw<C-R>"<Esc>
 
