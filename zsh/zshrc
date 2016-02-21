@@ -691,7 +691,7 @@ $PR_LIGHT_BLUE%(!.$PR_RED#.$PR_WHITE\$)$PR_SHIFT_IN$PR_SHIFT_OUT\
 $PR_CYAN$PR_SHIFT_IN$PR_SHIFT_OUT\
 $PR_NO_COLOUR '
 
-source ~/.vim/zsh/git-prompt.sh
+source ~/.dotfiles/zsh/git-prompt.sh
 RPROMPT=' $PR_CYAN$PR_SHIFT_IN$PR_HBAR$PR_BLUE$PR_HBAR$PR_SHIFT_OUT\
 ($PR_YELLOW%D{$(__git_ps1)}$PR_BLUE)\
 ($PR_YELLOW%D{%H:%M}$PR_BLUE)\

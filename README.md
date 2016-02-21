@@ -103,3 +103,4 @@ Other good references
 
 * [vgod - 分享我的vim設定檔](http://blog.vgod.tw/2011/03/19/vimrc/?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+vgod%2Fblog+%28vgod%27s+blog%29&utm_content=Google+Reader)
 * [MacTalk - 终极 Shell](http://macshuo.com/?p=676)
+* [Vim + Tmux](http://nicknisi.com/posts/2015-02-25-vim-tmux/)
