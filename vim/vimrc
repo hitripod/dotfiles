@@ -188,6 +188,11 @@ fun! Replace()
     :unlet! s:word 
 endfun 
 
+fun! VimuxRunInputCommand()
+    let cmd = input("Command:")
+    :exe 'VimuxRunCommand("' . cmd . '")'
+    :unlet! cmd
+endfun
 "------------------------------ LLVM bitcode ----------------------------"
 augroup filetype
   au! BufRead,BufNewFile *.ll     set filetype=llvm
@@ -253,6 +258,9 @@ let g:mapleader=","
 
 "replace the current word in all opened buffers
 map <leader>r :call Replace()<CR>
+
+"call VimuxRunCommand() with user input
+map <leader>e :call VimuxRunInputCommand()<CR>
 
 " open the error console
 map <leader>cc :botright cope<CR> 
