@@ -24,15 +24,20 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'chazmcgarvey/vimcoder'
 Plugin 'fatih/vim-go'
 Plugin 'majutsushi/tagbar'
-Plugin 'mxw/vim-jsx'
 Plugin 'Yggdroot/indentLine'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'markcornick/vim-vagrant'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'mattn/emmet-vim'
-Plugin 'kylef/apiblueprint.vim'
-Plugin 'dzeban/vim-log-syntax'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'benmills/vimux'
+Plugin 'benmills/vimux-golang'
+
+" for syntax highlighting
+Plugin 'dzeban/vim-log-syntax'
+Plugin 'kylef/apiblueprint.vim'
+Plugin 'mxw/vim-jsx'
+Plugin 'vim-scripts/applescript.vim'
 
 " vim-scripts repos
 Plugin 'closetag.vim'
