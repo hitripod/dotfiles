@@ -95,6 +95,7 @@
 # repository level by setting bash.hideIfPwdIgnored to "false".
 
 # check whether printf supports -v
+GIT_PS1_SHOWDIRTYSTATE="YES"
 __git_printf_supports_v=
 printf -v __git_printf_supports_v -- '%s' yes >/dev/null 2>&1
 
