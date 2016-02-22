@@ -189,7 +189,7 @@ fun! Replace()
 endfun 
 
 fun! VimuxRunInputCommand()
-    let cmd = input("Command:")
+    let cmd = escape(input("Command:"), '"')
     :exe 'VimuxRunCommand("' . cmd . '")'
     :unlet! cmd
 endfun
