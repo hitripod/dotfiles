@@ -152,8 +152,13 @@ fi
 #                      Kordan 
 #---------------------------------------------------##
 
-bindkey '\e[H'  beginning-of-line
-bindkey '\e[F'  end-of-line
+if { [ "$TERM" = "screen-256color" ] && [ -n "$TMUX" ]; } then
+    bindkey '^[[1~'  beginning-of-line
+    bindkey '^[[4~'  end-of-line
+else
+    bindkey '\e[H'  beginning-of-line
+    bindkey '\e[F'  end-of-line
+fi
 bindkey "\e[3~" delete-char
 bindkey '\e[B'  history-beginning-search-forward
 bindkey '\e[A'  history-beginning-search-backward

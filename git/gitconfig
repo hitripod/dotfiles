@@ -22,6 +22,7 @@
     hreset  = reset --hard
     dt      = checkout --detach
     update  = pull --rebase origin master
+    pr      = pull --rebase
     upload  = push origin master
     final   = rebase -i HEAD~2
     dry     = merge --no-commit --no-ff
@@ -38,6 +39,7 @@
 	autocrlf = false
 	whitespace = nowarn
 	editor = vim
+	excludesfile = /Users/kordan/.gitignore_global
 [receive]
 	denyDeleteCurrent = ignore
 [color]
