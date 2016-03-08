@@ -35,6 +35,9 @@ then
     alias mtr='sudo mtr'
     alias lsof='lsof -n -i4TCP|grep LISTEN'
 
+    # Wrap git automatically by adding the following to ~/.zshrc:
+    eval "$(hub alias -s)"
+
     # Safe delete
     del() {
         mv $@ ~/.Trash
@@ -51,7 +54,8 @@ then
     }
 
     # ZSH auto completion
-    fpath=($HOME/.zsh/func $fpath)
+    fpath=($HOME/.zsh/completions $fpath)
+    autoload -U compinit && compinit
     typeset -U fpath
 
     # Copy the file content

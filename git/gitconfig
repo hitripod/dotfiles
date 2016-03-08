@@ -44,3 +44,5 @@
 	denyDeleteCurrent = ignore
 [color]
 	ui = true
+[push]
+	default = simple

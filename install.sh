@@ -21,6 +21,8 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone git://github.com/tarruda/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 git clone git://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
+
 
 # Make the symbolic links - VIM
 ln -sf ~/.dotfiles/vim/vimrc ~/.vimrc
