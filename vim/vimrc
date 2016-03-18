@@ -179,6 +179,9 @@ highlight Search term=reverse ctermbg=4 ctermfg=7
 "                           End of General Settings
 "--------------------------------------------------------------------------- 
 
+"One way to make sure to remove all trailing whitespace in a file is to set an autocmd in your .vimrc file. Every time the user issues a :w command, Vim will automatically remove all trailing whitespace before saving.
+autocmd BufWritePre * :%s/\s\+$//e
+
 "--------------------------------------------------------------------------- 
 " Tip #382: Search for <cword> and replace with input() in all open buffers 
 "--------------------------------------------------------------------------- 
@@ -471,6 +474,11 @@ let g:SuperTabDefaultCompletionType = "context"
 nmap <Leader>l :YRShow<CR>
 " --- Ctrl-P
 nmap <Leader>t :CtrlP ./<CR>
+let g:ctrlp_custom_ignore = {
+\ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules)$',
+\ 'file': '\v\.(exe|so|dll)$',
+\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+\ }
 
 
 let g:tagbar_type_go = {
@@ -500,8 +508,6 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
     \ }
-
-
 
 set background=dark
 colorscheme solarized

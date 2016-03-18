@@ -27,8 +27,9 @@
     final   = rebase -i HEAD~2
     dry     = merge --no-commit --no-ff
     usub    = "submodule foreach --recursive git pull --rebase origin master"
-    pushnan    = "push bitbucket feature-NAN"
-    pullnan    = "pull --rebase bitbucket feature-NAN"
+    pushnan = "push bitbucket feature-NAN"
+    pullnan = "pull --rebase bitbucket feature-NAN"
+    undo    = checkout HEAD
 [diff]
     tool = araxis
     stat = true

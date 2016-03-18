@@ -15,7 +15,7 @@ UNAME=`uname`
 if [[ $UNAME == "Darwin" ]]
 then
 #---------------------------------------------------##
-#                       MAC only 
+#                       MAC only
 #---------------------------------------------------##
     export LSCOLORS="exfxcxdxcxegedabagacad"
     export LLVM_HOME="/Users/kordan/llvm-128332-bin"
@@ -72,6 +72,7 @@ then
     useSimpleZshTheme() {
         PROMPT='$PR_BLUE»$PR_NO_COLOUR '
         RPROMPT='$PR_BLUE($PR_YELLOW%D{$(__git_ps1)}$PR_BLUE)($PR_YELLOW%D{%H:%M}$PR_BLUE)'
+        clear
     }
 
     run_parallel () {
@@ -117,7 +118,7 @@ EOF
         elif [ $1 = "no" ]; then
             defaults write com.apple.finder CreateDesktop -bool TRUE; killall Finder;
         else
-            echo "Usage: hideDesktop yes|no" 
+            echo "Usage: hideDesktop yes|no"
         fi
     }
 
@@ -130,21 +131,21 @@ EOF
             ssh -t -p 12321 ouyw@211.152.9.188 "sudo ssh -p12321 118.26.224.146"
         elif [ $1 = "no" ]; then
         else
-            echo "Usage: sshp [fwdisk]" 
+            echo "Usage: sshp [fwdisk]"
         fi
     }
 
-    export LS_COLORS="no=00:fi=00:di=01;37:ln=01;36:\ 
-    #pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:\ 
-    #or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:\ 
-    #*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:\ 
-    #*.z=01;31:*.Z=01;31:*.gz=01;31:*.deb=01;31:\ 
-    #*.jpg=01;35:*.gif=01;35:*.bmp=01;35:*.ppm=01;35:\ 
-    #*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:\ 
+    export LS_COLORS="no=00:fi=00:di=01;37:ln=01;36:\
+    #pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:\
+    #or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:\
+    #*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:\
+    #*.z=01;31:*.Z=01;31:*.gz=01;31:*.deb=01;31:\
+    #*.jpg=01;35:*.gif=01;35:*.bmp=01;35:*.ppm=01;35:\
+    #*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:\
     #*.mpg=01;37:*.avi=01;37:*.gl=01;37:*.dl=01;37:"
-    
+
 #---------------------------------------------------##
-#                   End of MAC only 
+#                   End of MAC only
 #---------------------------------------------------##
 elif [[ $UNAME == "Linux" ]]
 then
@@ -153,7 +154,7 @@ then
 fi
 
 #---------------------------------------------------##
-#                      Kordan 
+#                      Kordan
 #---------------------------------------------------##
 
 if { [ "$TERM" = "screen-256color" ] && [ -n "$TMUX" ]; } then
@@ -169,7 +170,7 @@ bindkey '\e[A'  history-beginning-search-backward
 
 autoload -U colors && colors
 #echo "$fg_bold[red]zsh $fg_no_bold[white]is $bg[blue]$fg_bold[green]nice"
-          
+
 ## case-insensitive (uppercase from lowercase) completion
 #zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 ### case-insensitive (all) completion
@@ -178,11 +179,11 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 #zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 #
 # This allows extended characters to be shown when tabbing to complete, and so on...
-setopt printeightbit 
+setopt printeightbit
 
 my_accounts=(
     {tom,dick,harry,root}@10.0.1.201
-    {tom,dick,harry,root}@othermachine.com 
+    {tom,dick,harry,root}@othermachine.com
     sapporo@{ahost.com,somehost.com}
     modcarl@140.112.29.194
     admin@192.168.1.1
@@ -203,7 +204,7 @@ my_accounts=(
     root@61.164.125.244
     root@61.164.125.246
     root@61.164.125.252
-    
+
     ouyw@211.152.9.188
     myhung@122.116.46.180
 
@@ -214,7 +215,7 @@ my_accounts=(
 
 zstyle ':completion:*:my-accounts' users-hosts $my_accounts
 zstyle ':completion:*:(ssh|scp):*' tag-order users-hosts users hosts
-zstyle ':completion:*:(ssh|scp):*' group-order users-hosts users hosts 
+zstyle ':completion:*:(ssh|scp):*' group-order users-hosts users hosts
 
 zmodload -i zsh/complist
 export ZLS_COLORS=$LS_COLORS
@@ -232,7 +233,7 @@ gg () {
     #    grep -rIn --color "$1" "$2" --ignore-case --exclude=tags --exclude=react-bootstrap.min.js
     #else
         grep -rIn --color $* ./* --ignore-case --exclude=tags --exclude="*.min.js" --exclude="*.min.css" --exclude="*bootstrap.js"\
-            --exclude="*.min.map" --exclude-dir=node_modules --exclude-dir=dist 
+            --exclude="*.min.map" --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=build --exclude-dir=static
     #fi
 }
 
@@ -272,7 +273,7 @@ setip () {
     elif [ $1 = "dhcp" ]; then
         networksetup -setdhcp Ethernet
     else
-        echo "Usage: setip [list|lab|dhcp]" 
+        echo "Usage: setip [list|lab|dhcp]"
     fi
 }
 
@@ -285,7 +286,7 @@ abs () {
 # adb for iPhone
 adbi () {
     if [ $1 = "start-server" ]; then
-        tcprelay.py -t 22:2222 & 
+        tcprelay.py -t 22:2222 &
     elif [ $1 = "kill-server" ]; then
         kill `ps -ax|grep tcprelay|awk '{print $1}'`
     elif [ $1 = "shell" ]; then
@@ -296,7 +297,7 @@ adbi () {
         echo "not implemented yet"
     else
         echo "usage: start-server, kill-server, shell"
-    fi 
+    fi
 }
 
 upload() {
@@ -347,7 +348,7 @@ setopt  promptsubst \
 cshnullglob \
 extendedglob    \
 histignorespace \
-#correctall 
+#correctall
 
 ## Completions
 autoload -U compinit
@@ -488,7 +489,7 @@ zstyle ':completion::complete:*' cache-path .zcache
 zstyle ':completion:*:match:*' original only
 zstyle ':completion::prefix-1:*' completer _complete
 zstyle ':completion:predict:*' completer _complete
-zstyle ':completion:incremental:*' completer _complete 
+zstyle ':completion:incremental:*' completer _complete
 zstyle ':completion:*' completer _complete _prefix _prefix _match _approximate
 
 # Path Expansion
@@ -532,13 +533,13 @@ function precmd {
 
     local TERMWIDTH
     (( TERMWIDTH = ${COLUMNS} - 1 ))
-    
+
     ###
     # Truncate the path if it's too long.
-    
+
     PR_FILLBAR=""
     PR_PWDLEN=""
-    
+
     local promptsize=${#${(%):---(%n@%m)----}}
     local pwdsize=${#${(%):-%/}}
 
@@ -548,10 +549,10 @@ function precmd {
     # the width of horizontal prompt bar
     PR_FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $pwdsize)))..${PR_HBAR}.)}"
     fi
-    
+
     ###
     # Get APM info.
-    
+
     #if which ibam > /dev/null; then
     #PR_APM_RESULT=`ibam --percentbattery`
     #elif which apm > /dev/null; then
@@ -667,7 +668,7 @@ PR_APM=''
 ###
 # Finally, the prompt.
 #
-# ZSH uses the KEYTIMEOUT parameter to determine how long to wait (in hundredths of a second) 
+# ZSH uses the KEYTIMEOUT parameter to determine how long to wait (in hundredths of a second)
 # for additional characters in sequence. Default is 0.4 seconds.
 KEYTIMEOUT=1 # 10ms
 # If I am using vi keys, I want to know what mode I'm currently using.
@@ -730,7 +731,7 @@ setprompt
 export PATH="/usr/local/heroku/bin:$PATH"
 
 # Add RVM to PATH for scripting
-PATH=$PATH:$HOME/.rvm/bin 
+PATH=$PATH:$HOME/.rvm/bin
 source ~/.profile
 
 
