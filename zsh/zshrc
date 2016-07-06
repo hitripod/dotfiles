@@ -167,6 +167,8 @@ fi
 bindkey "\e[3~" delete-char
 bindkey '\e[B'  history-beginning-search-forward
 bindkey '\e[A'  history-beginning-search-backward
+bindkey "^[l" forward-word
+bindkey "^[h" backward-word
 
 autoload -U colors && colors
 #echo "$fg_bold[red]zsh $fg_no_bold[white]is $bg[blue]$fg_bold[green]nice"
@@ -204,6 +206,7 @@ my_accounts=(
     root@61.164.125.244
     root@61.164.125.246
     root@61.164.125.252
+    root@101.200.190.171
 
     ouyw@211.152.9.188
     myhung@122.116.46.180
@@ -338,6 +341,7 @@ hash -d P="/Users/kordan/Dropbox/Career/Research/Latex/Template 拷貝/RenderScr
 hash -d d="/Users/kordan/Downloads/"
 hash -d KO="/Users/kordan/CodeProject/nodejs/quick-hitter"
 hash -d OWL="/Users/kordan/CodeProject/owl/open-falcon"
+hash -d BACKEND="/Users/kordan/go/src/github.com/Cepave/open-falcon-backend"
 hash -d GITHUB="/Users/kordan/go/src/github.com"
 hash -d NOTES="/Users/kordan/Dropbox/Notational Data/Markdowns"
 
@@ -746,3 +750,7 @@ zle -N autosuggest_start
 
 # accept the suggestion and execute it.
 bindkey '^f' autosuggest-execute
+
+
+
+source $(brew --prefix nvm)/nvm.sh

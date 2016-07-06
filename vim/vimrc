@@ -1,6 +1,6 @@
-"--------------------------------------------------------------------------- 
+"---------------------------------------------------------------------------
 "                              Vundle Settings
-"--------------------------------------------------------------------------- 
+"---------------------------------------------------------------------------
 
 set nocompatible               " be iMproved
 filetype off                   " required!
@@ -60,9 +60,9 @@ filetype plugin indent on     " required!
  " see :h vundle for more details or wiki for FAQ
  " NOTE: comments after Bundle command are not allowed..
 
-"--------------------------------------------------------------------------- 
+"---------------------------------------------------------------------------
 "                           General Settings
-"--------------------------------------------------------------------------- 
+"---------------------------------------------------------------------------
 if filereadable($VIMRUNTIME . "/vimrc_example.vim")
   so $VIMRUNTIME/vimrc_example.vim
 endif
@@ -72,16 +72,16 @@ if filereadable($VIMRUNTIME . "/macros/matchit.vim")
 endif
 
 if has("gui_running")   " GUI color and font settings
-  set background=dark 
+  set background=dark
   set t_Co=256          " 256 color mode
   set cursorline        " highlight current line
 else
 " terminal color settings
   set cursorline        " highlight current line
-endif      
+endif
 
 set cindent
-set smartindent            
+set smartindent
 set nu
 set secure
 set enc=taiwan
@@ -98,7 +98,7 @@ set showcmd
 set incsearch
 "set paste // if this option is enabled, will conflict with auto-indent
 set nocompatible        " not compatible with the old-fashion vi mode
-set autoread            " auto read when file is changed from outside        
+set autoread            " auto read when file is changed from outside
 set backspace=2         " allow backspacing over everything in insert mode
 set viminfo='20,\"50    " read/write a .viminfo file, don't store more than 50 lines of registers
 set history=50          " keep 50 lines of command line history
@@ -123,6 +123,11 @@ set smartcase           " ignore case if search pattern is all lowercase,case-se
 set smarttab            " insert tabs on the start of a line according to context
 syntax on               " syntax highlighting
 
+" Remove swap and backup files from the working directory
+set dir=/tmp
+set backupdir=/tmp
+set udir=/tmp
+
 " disable sound on errors
 set novisualbell
 set t_vb=
@@ -130,17 +135,17 @@ set tm=500
 
 " TAB setting{
    set expandtab        "replace <TAB> with spaces
-   set softtabstop=4 
-   set shiftwidth=4 
+   set softtabstop=4
+   set shiftwidth=4
 
    au FileType Makefile set noexpandtab
-"}     
+"}
 
 " status line {
 set laststatus=2 " The last window will 'always' have a status line
-set statusline=\ %{HasPaste()}%<%-15.25(%f%)%m%r%h\ %w\ \ 
-set statusline+=\ \ \ [%{&ff}/%Y] 
-set statusline+=\ \ \ %<%20.30(%{hostname()}:%{CurDir()}%)\ 
+set statusline=\ %{HasPaste()}%<%-15.25(%f%)%m%r%h\ %w\ \
+set statusline+=\ \ \ [%{&ff}/%Y]
+set statusline+=\ \ \ %<%20.30(%{hostname()}:%{CurDir()}%)\
 set statusline+=%=%-10.(%l,%c%V%)\ %p%%/%L
 
 function! CurDir()
@@ -155,14 +160,14 @@ function! HasPaste()
         return ''
     endif
 endfunction
-"}     
+"}
 
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
-filetype plugin on    " Enable filetype-specific plugins  
+filetype plugin on    " Enable filetype-specific plugins
 
 " auto reload vimrc when editing it
-autocmd! bufwritepost .vimrc source ~/.vimrc            
+autocmd! bufwritepost .vimrc source ~/.vimrc
 
 " C/C++ specific settings
 autocmd FileType c,cpp,cc  set cindent comments=sr:/*,mb:*,el:*/,:// cino=>s,e0,n0,f0,{0,}0,^-1s,:0,=s,g0,h1s,p2,t0,+2,(2,)20,*30
@@ -175,21 +180,21 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 highlight Search term=reverse ctermbg=4 ctermfg=7
 "helptags ~/.vim/doc
 
-"--------------------------------------------------------------------------- 
+"---------------------------------------------------------------------------
 "                           End of General Settings
-"--------------------------------------------------------------------------- 
+"---------------------------------------------------------------------------
 
 "One way to make sure to remove all trailing whitespace in a file is to set an autocmd in your .vimrc file. Every time the user issues a :w command, Vim will automatically remove all trailing whitespace before saving.
 autocmd BufWritePre * :%s/\s\+$//e
 
-"--------------------------------------------------------------------------- 
-" Tip #382: Search for <cword> and replace with input() in all open buffers 
-"--------------------------------------------------------------------------- 
-fun! Replace() 
-    let s:word = input("Replace " . expand('<cword>') . " with:") 
-    :exe 'bufdo! %s/\<' . expand('<cword>') . '\>/' . s:word . '/ge' 
-    :unlet! s:word 
-endfun 
+"---------------------------------------------------------------------------
+" Tip #382: Search for <cword> and replace with input() in all open buffers
+"---------------------------------------------------------------------------
+fun! Replace()
+    let s:word = input("Replace " . expand('<cword>') . " with:")
+    :exe 'bufdo! %s/\<' . expand('<cword>') . '\>/' . s:word . '/ge'
+    :unlet! s:word
+endfun
 
 fun! VimuxRunInputCommand()
     let cmd = escape(input("Command:"), '"')
@@ -199,9 +204,9 @@ endfun
 "------------------------------ LLVM bitcode ----------------------------"
 augroup filetype
   au! BufRead,BufNewFile *.ll     set filetype=llvm
-  au! BufNewFile,BufRead *.plist setf plist 
+  au! BufNewFile,BufRead *.plist setf plist
   au! BufRead,BufNewFile *.td     set filetype=tablegen
-augroup END 
+augroup END
 
 "------------------------------ For Python ------------------------------"
 autocmd BufRead,BufNewFile *.py syntax on
@@ -228,11 +233,11 @@ let g:acp_behaviorSnipmateLength=1
 au BufRead,BufNewFile *.c set makeprg=clang\ -g\ -Wall\ -Wextra\ -ftrapv\ -O0\ %\ -o\ %<
 au BufRead,BufNewFile *.cpp set makeprg=clang++\ -g\ -Wall\ -Wextra\ -ftrapv\ -O0\ %\ -o\ %<
 au BufRead,BufNewFile *.java set makeprg=javac\ -encoding\ utf8\ %
-au BufRead,BufNewFile *.fx set makeprg=javafxc\ -encoding\ utf8\ % 
+au BufRead,BufNewFile *.fx set makeprg=javafxc\ -encoding\ utf8\ %
 au BufRead,BufNewFile *.{c,cpp,java,fx} nmap <F5> :w<CR>:make<CR>
 au BufRead,BufNewFile *.{c,cpp,java,fx} nmap <F6> :! ./%<<CR>
-au BufNewFile,BufReadPost *.rs  set filetype=c 
-au BufRead,BufNewFile *.jsx  setl expandtab shiftwidth=2 softtabstop=2
+au BufNewFile,BufReadPost *.rs  set filetype=c
+au BufRead,BufNewFile *.{jsx,js,html}  setl expandtab shiftwidth=2 softtabstop=2
 
 "func CodeFormat()
 "          " get the line number of current cursor
@@ -244,17 +249,17 @@ au BufRead,BufNewFile *.jsx  setl expandtab shiftwidth=2 softtabstop=2
 "                    exec option_s." --mode=c"
 "          elseif &filetype == 'java'
 "                    exec option_s." --mode=java"
-"          else 
+"          else
 "                    echo "CodeFormat doesn't support ".&filetype." filetype."
 "          endif
 "          " return to the line where cursor was
 "          exec lineNum
 "endfunc
-"map <S-F> <Esc>:call CodeFormat()<CR>  
+"map <S-F> <Esc>:call CodeFormat()<CR>
 
-"--------------------------------------------------------------------------- 
+"---------------------------------------------------------------------------
 " USEFUL SHORTCUTS
-"--------------------------------------------------------------------------- 
+"---------------------------------------------------------------------------
 " set leader to ,
 let mapleader=","
 let g:mapleader=","
@@ -266,28 +271,28 @@ map <leader>r :call Replace()<CR>
 map <leader>e :call VimuxRunInputCommand()<CR>
 
 " open the error console
-map <leader>cc :botright cope<CR> 
+map <leader>cc :botright cope<CR>
 " move to next error
 map <leader>] :cn<CR>
 " move to the prev error
 map <leader>[ :cp<CR>
 
 " --- move around splits {
-" move to and maximize the below split 
+" move to and maximize the below split
 map <C-J> <C-W>j<C-W>_
-" move to and maximize the above split 
+" move to and maximize the above split
 map <C-K> <C-W>k<C-W>_
-" move to and maximize the left split 
+" move to and maximize the left split
 nmap <c-h> <c-w>h<c-w><bar>
-" move to and maximize the right split  
+" move to and maximize the right split
 nmap <c-l> <c-w>l<c-w><bar>
-set wmw=0                     " set the min width of a window to 0 so we can maximize others 
+set wmw=0                     " set the min width of a window to 0 so we can maximize others
 set wmh=0                     " set the min height of a window to 0 so we can maximize others
 " }
 
 " move around tabs. conflict with the original screen top/bottom
 " comment them out if you want the original H/L
-" go to prev tab 
+" go to prev tab
 map <C-Tab> gT
 " go to next tab
 map <C-S-Tab> gt
@@ -295,7 +300,7 @@ map <C-S-Tab> gt
 " new tab
 map <C-t><C-t> :tabnew<CR>
 " close tab
-map <C-t><C-w> :tabclose<CR> 
+map <C-t><C-w> :tabclose<CR>
 
 " ,/ turn off search highlighting
 nmap <leader>/ :nohl<CR>
@@ -376,13 +381,13 @@ nnoremap <A-F0> 10gt
 nnoremap <leader>m :silent !open '%:p'<cr>
 
 " convert binary to hex
-map <Leader>hon :%!xxd<CR> 
+map <Leader>hon :%!xxd<CR>
 map <Leader>hof :%!xxd -r<CR>
 "--------------- End of self-defined keymap --------------
 
-"--------------------------------------------------------------------------- 
+"---------------------------------------------------------------------------
 " PROGRAMMING SHORTCUTS
-"--------------------------------------------------------------------------- 
+"---------------------------------------------------------------------------
 
 " Ctrl-[ jump out of the tag stack (undo Ctrl-])
 " map <C-[> <ESC>:po<CR>
@@ -419,21 +424,21 @@ autocmd BufNewFile,BufRead *.scss             set ft=scss.css
 autocmd BufNewFile,BufRead *.sass             set ft=sass.css
 autocmd BufRead,BufNewFile *.Rul              set ft=installshield
 
-"--------------------------------------------------------------------------- 
+"---------------------------------------------------------------------------
 " ENCODING SETTINGS
-"--------------------------------------------------------------------------- 
-set encoding=utf-8                                  
+"---------------------------------------------------------------------------
+set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,big5,latin1
 
 fun! ViewUTF8()
-    set encoding=utf-8                                  
+    set encoding=utf-8
     set termencoding=big5
 endfun
 
 fun! UTF8()
-    set encoding=utf-8                                  
+    set encoding=utf-8
     set termencoding=big5
     set fileencoding=utf-8
     set fileencodings=ucs-bom,big5,utf-8,latin1
@@ -444,9 +449,9 @@ fun! Big5()
     set fileencoding=big5
 endfun
 
-"--------------------------------------------------------------------------- 
+"---------------------------------------------------------------------------
 "                           PLUGIN SETTINGS
-"--------------------------------------------------------------------------- 
+"---------------------------------------------------------------------------
 
 " --- Vim-Latex
 " IMPORTANT: win32 users will need to have 'shellslash' set so that latex
@@ -468,14 +473,14 @@ let g:Tex_CompileRule='pdf'
 let g:Tex_Leader=','
 
 " --- SuperTab
-let g:SuperTabDefaultCompletionType = "context" 
+let g:SuperTabDefaultCompletionType = "context"
 
-" --- Yank Ring 
+" --- Yank Ring
 nmap <Leader>l :YRShow<CR>
 " --- Ctrl-P
 nmap <Leader>t :CtrlP ./<CR>
 let g:ctrlp_custom_ignore = {
-\ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules)$',
+\ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|build)$',
 \ 'file': '\v\.(exe|so|dll)$',
 \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
 \ }

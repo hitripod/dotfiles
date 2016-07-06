@@ -47,3 +47,5 @@
 	ui = true
 [push]
 	default = simple
+[init]
+	templatedir = /Users/kordan/.git-templates
