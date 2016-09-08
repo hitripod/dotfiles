@@ -753,4 +753,7 @@ bindkey '^f' autosuggest-execute
 
 
 
-source $(brew --prefix nvm)/nvm.sh
+if [[ $UNAME == "Darwin" ]]
+then
+    source $(brew --prefix nvm)/nvm.sh
+fi
