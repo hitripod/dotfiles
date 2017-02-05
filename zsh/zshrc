@@ -751,9 +751,5 @@ zle -N autosuggest_start
 # accept the suggestion and execute it.
 bindkey '^f' autosuggest-execute
 
-
-
-if [[ $UNAME == "Darwin" ]]
-then
-    source $(brew --prefix nvm)/nvm.sh
-fi
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
