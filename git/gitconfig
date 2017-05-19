@@ -49,3 +49,5 @@
 	default = simple
 [init]
 	templatedir = /Users/kordan/.git-templates
+[http]
+	sslVerify = true
