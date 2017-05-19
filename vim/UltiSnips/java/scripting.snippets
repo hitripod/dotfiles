@@ -1,0 +1,24 @@
+snippet bean "getter/setter"
+	/**
+	 * Gets ${1}.<p>
+	 *
+	 * @return $1
+	 *
+	 * @see #set`!v b:_java_global_varCapitalizedName`
+	 */
+	public `!v b:_java_global_propertyDecl[0]` get`!v b:_java_global_varCapitalizedName`()
+	{
+		return `!v b:_java_global_propertyDecl[1]`;
+	}
+	/**
+	 * Sets $1.<p>
+	 *
+	 * @param new`!v b:_java_global_varCapitalizedName` $1
+	 *
+	 * @see #get`!v b:_java_global_varCapitalizedName`
+	 */
+	public void set`!v b:_java_global_varCapitalizedName`(`!v b:_java_global_propertyDecl[0]` new`!v b:_java_global_varCapitalizedName`)
+	{
+		`!v b:_java_global_propertyDecl[1]` = new`!v b:_java_global_varCapitalizedName`;
+	}
+endsnippet

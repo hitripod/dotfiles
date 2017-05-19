@@ -32,6 +32,9 @@ Plugin 'mattn/emmet-vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'benmills/vimux'
 Plugin 'benmills/vimux-golang'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 " for syntax highlighting
 Plugin 'dzeban/vim-log-syntax'
@@ -516,3 +519,13 @@ let g:tagbar_type_go = {
 
 set background=dark
 colorscheme solarized
+
+" --- Ultisnips
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-b>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"

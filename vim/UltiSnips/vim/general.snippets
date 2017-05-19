@@ -1,0 +1,31 @@
+snippet loading_check "Filetype Plugin"
+if exists('b:loaded_local_`!v expand("%:t:r")`_ftplugin')
+	if !exists('g:reload_local_`!v expand("%:t:r")`_ftplugin')
+		finish
+	endif
+
+	" Unset mapping...
+endif
+
+let b:loaded_local_`!v expand("%:t:r")`_ftplugin = 1
+endsnippet
+
+snippet loading_check "Autoload"
+if exists("g:autoload_`!v expand("%:t:r")`") && !exists("g:reload_autoload_`!v expand("%:t:r")`")
+	finish
+endif
+
+let g:autoload_`!v expand("%:t:r")` = 1
+endsnippet
+
+snippet loading_check "Plugin"
+if exists("g:plugin_`!v expand("%:t:r")`")
+	if !exists("g:reload_plugin_`!v expand("%:t:r")`")
+		finish
+	endif
+
+	" Unset mapping...
+endif
+
+let g:plugin_`!v expand("%:t:r")` = 1
+endsnippet

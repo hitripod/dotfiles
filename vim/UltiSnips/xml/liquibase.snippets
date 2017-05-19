@@ -1,0 +1,141 @@
+snippet liquibase_changelog "Change log"
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="
+		http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+	">
+	${1}
+</databaseChangeLog>
+endsnippet
+
+snippet liquibase_changeset "Change set(test)"
+<changeSet id="${1}" labels="$1" author="${testClassName}">
+	${0}
+	<rollback>
+	</rollback>
+</changeSet>
+endsnippet
+
+snippet liquibase_command "postgresql create enum"
+<sql>
+CREATE TYPE ${1} AS ENUM (
+	'${2}', '${3}', '${4}', '${5}'
+)
+</sql>
+endsnippet
+
+snippet liquibase_command "main file"
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+	http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd"
+>
+
+	<property name="clob.type" value="clob" dbms="oracle"/>
+	<property name="clob.type" value="longtext" dbms="mysql"/>
+
+	<include file="1-${1}.xml" relativeToChangelogFile="${2:false}"/>
+</databaseChangeLog>
+endsnippet
+
+snippet liquibase_command "include"
+<include file="${1}-${2}.xml" relativeToChangelogFile="${2:false}"/>
+endsnippet
+
+snippet liquibase_column "column"
+<column name="${1}" type="${2}">
+	<constraints ${3:nullable="false"} />
+</column>
+endsnippet
+
+snippet liquibase_constraints "constraints"
+<constraints ${1} />
+endsnippet
+
+snippet liquibase_constraint "PK attr"
+primaryKey="true" primaryKeyName="PK_${1}"
+endsnippet
+
+snippet liquibase_constraint "FK attr"
+foreignKeyName="fk_${1}__${2}" references="$2(${3})"
+endsnippet
+
+snippet liquibase_constraint "Unique attr"
+unique="true" uniqueConstraintName="unq_${1}__${2}"
+endsnippet
+
+snippet liquibase_constraint "Nullable attr"
+nullable="${1}"
+endsnippet
+
+snippet liquibase_command "changelog"
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+	http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd"
+	logicalFilePath="$1-$2.xml"
+>
+	<changeSet id="${1}" author="${2}">
+		<comment>${3}</comment>
+	</changeSet>
+</databaseChangeLog>
+endsnippet
+
+snippet liquibase_command "create table"
+<createTable tableName="${1}">
+	<column name="${2}" type="${3}"${4: autoIncrement="true"}>
+		<constraints primaryKey="true" primaryKeyName="pk_$1" />
+	</column>
+	<column name="${5}" type="${6}">
+		<constraints nullable="false" />
+	</column>
+</createTable>
+endsnippet
+
+snippet liquibase_command "FK tag"
+<addForeignKeyConstraint constraintName="fk_$1__$3"
+	baseTableName="${1}" baseColumnNames="${2}"
+	referencedTableName="${3}" referencedColumnNames="${4}"
+/>
+
+snippet liquibase_command unique
+<addUniqueConstraint tableName="${1}" columnNames="${2}"
+	constraintName="unq_$1__$2"/>
+endsnippet
+
+snippet liquibase_command "PK tag"
+<addPrimaryKey tableName="${1}" columnNames="${2}"
+	constraintName="pk_$1"/>
+endsnippet
+
+snippet liquibase_command "Index tag"
+<createIndex tableName="${1}" indexName="ix_$1__$2_$3">
+	<column name="${2}"/>
+	<column name="${3}"/>
+</createIndex>
+endsnippet
+
+snippet liquibase_command "Unique tag"
+<addUniqueConstraint tableName="${1}" columnNames="${2}" constraintName="uni_$1_$2" />
+endsnippet
+
+snippet liquibase_command "insert"
+<insert tableName="${1}">
+	<column name="${2}" value="${3}"/>
+	<column name="${4}" valueNumeric="${5}"/>
+	<column name="${6}" valueBoolean="${7}"/>
+</insert>
+endsnippet
+
+snippet liquibase_command "modify column"
+<modifyDataType tableName="${1}" columnName="${2}" newDataType="${3}"/>
+endsnippet

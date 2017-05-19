@@ -1,0 +1,79 @@
+snippet Check.File.Package "[Check] Package"
+package `!v expand("%:p:h:t")`
+
+import (
+	"testing"
+	ch "gopkg.in/check.v1"
+
+	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/gomega"
+)
+
+func TestByGinkgo(t *testing.T) {
+	RegisterFailHandler(Fail)
+	RunSpecs(t, "Base Suite")
+}
+
+func TestByCheck(t *testing.T) {
+	ch.TestingT(t)
+}
+endsnippet
+
+snippet Check.File.Suite "[Check] Suite File"
+package `!v expand("%:p:h:t")`
+
+import (
+	ocheck "github.com/Cepave/open-falcon-backend/common/testing/check"
+	. "gopkg.in/check.v1"
+)
+
+type ${1} struct{}
+
+var _ = Suite(&$1{})
+
+${2}
+endsnippet
+
+snippet Check.Func "[Check] func (suite *SuiteType) TestXXX()"
+// ${1}
+func (suite *${2}) Test${3}(c *C) {
+	${4}
+}
+endsnippet
+
+snippet Test.Cases "Generate Test Cases..."
+testCases := []*struct {
+	${1}
+} {
+	{ ${2} }
+}
+
+for i, testCase := range testCases {
+	comment := ocheck.TestCaseComment(i)
+	ocheck.LogTestCase(c, testCase)
+
+	c.Assert(${3}, ${4}, testCase.${5}, comment)
+}
+endsnippet
+
+snippet Check.SetupSuite "[Check] SetupSuite"
+func (s *${1}) SetUpSuite(c *C) {
+	${2}
+}
+endsnippet
+
+snippet Check.SetupTest "[Check] SetupTest"
+func (s *${1}) SetUpTest(c *C) {
+	${2}
+}
+endsnippet
+snippet Check.TearDownSuite "[Check] TearDownSuite"
+func (s *${1}) TearDownSuite(c *C) {
+	${2}
+}
+endsnippet
+snippet Check.TearDownTest "[Check] TearDownTest"
+func (s *${1}) TearDownTest(c *C) {
+	${2}
+}
+endsnippet

@@ -1,0 +1,16 @@
+snippet "junit5 test file" "public class ..."
+package `!v maven#getJavaPackageOfBuffer(bufnr("%"))`;
+
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class `!v expand("%:t:r")` {
+	public `!v expand("%:t:r")`() {}
+
+	@Test
+	void ${1}()
+	{
+		${2}
+	}
+}
+endsnippet

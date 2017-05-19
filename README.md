@@ -42,9 +42,9 @@ PLUGINS
 -------
 
 
-### [Ctrl-P](http://www.github.com/kien/ctrlp.vim.git): Fuzzy file, buffer, mru, tag, etc finder. 
-    
-Press `,t` to do the fuzzy search. 
+### [Ctrl-P](http://www.github.com/kien/ctrlp.vim.git): Fuzzy file, buffer, mru, tag, etc finder.
+
+Press `,t` to do the fuzzy search.
 
 ### [VIM Surround](http://www.github.com/tpope/vim-surround): Make quoting/parenthesizing simpler.
 
@@ -70,7 +70,7 @@ Press `Ctrl + _` to insert the HTML/XML tag not closed.
 Press `F1` to show up the explorer.
 
 ### [Taglist](http://www.github.com/vim-scripts/taglist.vim): Source code browser.
-    
+
 Press `F2` to show the symbol list.
 
 ### [Cscope](http://www.github.com/vim-scripts/cscope.vim) and [Ctags](http://www.github.com/vim-scripts/ctags.vim): Display function name in the title bar.
@@ -90,6 +90,16 @@ Execute `cscope -bqR && ctags -R *` at your project root.
 ### [Emmet](https://github.com/mattn/emmet-vim)
 
 `<C-y>,` to expand the abbreviation. [More Tutorials](https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL)
+
+### [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
+
+  xcode-select --install
+  brew install cmake
+  ~/.vim/bundle/YouCompleteMe/install.py --clang-completer
+
+### [Ultisnips](https://github.com/SirVer/ultisnips)
+
+* `<c-b>`: Expand the UltiSnips
 
 ### Shortcuts
 

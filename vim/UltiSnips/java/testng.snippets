@@ -1,0 +1,41 @@
+snippet "testng class" "TestNG class"
+package `!v maven#getJavaPackageOfBuffer(bufnr("%"))`;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class `!v expand("%:t:r")` {
+	public `!v expand("%:t:r")`() {}
+
+	/**
+	 * ${1}
+	 */
+	@Test
+	public void ${2}()
+	{
+		${3}
+	}
+}
+endsnippet
+
+snippet "testng method" "TestNG Method"
+/**
+ * ${1}
+ */
+@Test${2:(dataProvider="${3}")}
+public void ${4}()
+{
+	${5}
+}
+endsnippet
+
+snippet "testng @DataProvider" "TestNG @DataProvider"
+@DataProvider(name="${1}")
+private Object[][] get$1()
+{
+	return new Object[][] {
+		{ ${2} },
+		{ ${3} },
+	};
+}
+endsnippet

@@ -1,0 +1,18 @@
+snippet tag "<a id=...></a>" i
+<a id="${1}"></a>
+endsnippet
+
+snippet tag "<pre class='code <language>'></pre>"
+<pre class="code ${1}"><![CDATA[
+${0}
+]]></pre>
+endsnippet
+
+snippet db "database table"
+# ${1}
+${2}
+
+| name        | type | constraint | detail       |
+| ---         | ---  | ---        | ---          |
+| ``${3}_id`` | INT  | PK         | Internal Key |
+endsnippet

@@ -1,0 +1,47 @@
+snippet "valid anno" "Constraint Annotation"
+package `!v maven#getJavaPackageOfBuffer(bufnr("%"))`;
+
+import java.lang.annotation.*;
+import javax.validation.*;
+import static java.lang.annotation.ElementType.*;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+@Target({ ${1:FIELD, METHOD, PARAMETER, ANNOTATION_TYPE} })
+@Retention(RUNTIME)
+@Constraint(validatedBy=`!v expand("%:t:r")`.Validator.class)
+@Documented
+public @interface `!v expand("%:t:r")` {
+	String message() default "{${2}}";
+	Class<?>[] groups() default { };
+	Class<? extends Payload>[] payload() default { };
+
+	${3} value();
+
+	@Target({ $1 })
+	@Retention(RUNTIME)
+	@Documented
+	@interface List {
+		`!v expand("%:t:r")`[] value();
+	}
+
+	public static class Validator implements ConstraintValidator<`!v expand("%:t:r")`, ${4}> {
+		private $3 ${5};
+
+		@Override
+		public void initialize(`!v expand("%:t:r")` constraintAnnotation)
+		{
+			this.$5 = constraintAnnotation.value();
+		}
+
+		@Override
+		public boolean isValid($4 object, ConstraintValidatorContext constraintContext)
+		{
+			if (object == null) {
+				return true;
+			}
+
+			${6}
+		}
+	}
+}
+endsnippet

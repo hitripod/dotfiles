@@ -1,0 +1,119 @@
+snippet "ginkgo file package" "import (...) func TestByGinkgo..."
+package `!v expand("%:p:h:t")`
+
+import (
+	"testing"
+	ch "gopkg.in/check.v1"
+
+	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/gomega"
+)
+
+func TestByGinkgo(t *testing.T) {
+	RegisterFailHandler(Fail)
+	RunSpecs(t, "Base Suite")
+}
+
+func TestByCheck(t *testing.T) {
+	ch.TestingT(t)
+}
+endsnippet
+
+snippet "ginkgo test file" "import (...) var _ = Describe(...)"
+package `!v expand("%:p:h:t")`
+
+import (
+	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/extensions/table"
+	. "github.com/onsi/gomega"
+)
+
+var _ = Describe("${1}", func() {
+	${2}
+
+	It(func() {
+		${3}
+	})
+})
+endsnippet
+
+snippet "ginkgo table driven" "DescribeTable(...)"
+DescribeTable("${1}",
+	func(${2}) {
+		Expect(${5}).To(${6})
+	},
+	Entry("${3}", ${4}),
+)
+endsnippet
+
+snippet "ginkgo desc" "Describe(..., func() {})"
+Describe("${1}", func() {
+	${2}
+})
+endsnippet
+
+snippet "ginkgo context" "Context(..., func() {})"
+Context("${1}", func() {
+	${2}
+})
+endsnippet
+
+snippet "ginkgo it" "It(..., func() {})"
+It("${1}", func() {
+	${2}
+})
+endsnippet
+
+snippet "ginkgo spec" "Specify(..., func() {})"
+Specify("${1}", func() {
+	${2}
+})
+endsnippet
+
+snippet "ginkgo before" "BeforeEach(func() {}, ...)"
+BeforeEach(func() {
+	${1}
+})
+endsnippet
+
+snippet "ginkgo justbefore" "JustBeforeEach(func() {}, ...)"
+JustBeforeEach(func() {
+	${1}
+})
+endsnippet
+
+snippet "ginkgo after" "AfterEach(func() {}, ...)"
+AfterEach(func() {
+	${1}
+})
+endsnippet
+
+snippet "ginkgo before suite" "var _ = BeforeSuite(func() { ... })"
+var _ = BeforeSuite(func() {
+	${1}
+})
+endsnippet
+snippet "ginkgo after suite" "var _ = AfterSuite(func() { ... })"
+var _ = AfterSuite(func() {
+	${1}
+})
+endsnippet
+
+snippet "ginkgo caseIt" "caseIt := func(...) ..."
+caseIt := func(text string, testedValue ${1}, expectedValue ${2}) {
+	It(text, func() {
+		Expect(${3}.To(${4}(expectedValue))
+	})
+}
+endsnippet
+
+snippet "gingo measure" "Measure(..., func(...) ...)"
+Measure("${1}", func(b Benchmarker) {
+	runtime := b.Time("${2:runtime}", func() {
+		${3}
+		Expect(${4}).To(${5})
+	})
+
+	Expect(${6}).To(${7})
+}, ${8})
+endsnippet

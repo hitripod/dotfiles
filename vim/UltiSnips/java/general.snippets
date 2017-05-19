@@ -1,0 +1,206 @@
+snippet "class general" "General Class"
+package `!v maven#getJavaPackageOfBuffer(bufnr("%"))`;
+
+public class `!v expand("%:t:r")` {
+	public `!v expand("%:t:r")`()
+	{
+		${0}
+	}
+}
+endsnippet
+
+snippet "class utility" "Utility Interface"
+package `!v maven#getJavaPackageOfBuffer(bufnr("%"))`;
+
+public interface `!v expand("%:t:r")` {
+	public static ${1} ${2}()
+	{
+		${3}
+	}
+}
+endsnippet
+
+snippet "class bean" "Bean Class"
+package `!v maven#getJavaPackageOfBuffer(bufnr("%"))`;
+
+public class `!v expand("%:t:r")` {
+	public `!v expand("%:t:r")`() {}
+
+	import org.apache.commons.lang3.builder.HashCodeBuilder;
+	import org.apache.commons.lang3.builder.EqualsBuilder;
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (obj == null) { return false; }
+		if (obj == this) { return true; }
+		if (obj.getClass() != getClass()) {
+			return false;
+		}
+
+		`!v expand("%:t:r")` rhs = (`!v expand("%:t:r")`)obj;
+		return new EqualsBuilder()
+			.append(!super!, !super!)
+			.append(this.${1}(), rhs.$1()})
+			.isEquals();
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return new HashCodeBuilder(`!v java#randomOddNumber(1001, 999999999)`, `!v java#randomOddNumber(1001, 999999999)`)
+			.append(${2}())
+		.toHashCode();
+	}
+}
+endsnippet
+
+snippet "class lambda" "Lambda Builder"
+public class ${1} {
+	public static build(Consumer<$1.Builder> builderConsumer)
+	{
+		$1 ${2} = new $1();
+		$1.Builder builder = $2 Builder();
+
+		builderConsumer.accept(builder);
+
+		${3}
+	}
+
+	public class Builder {
+		private Builder() {}
+	}
+
+	private $1() {}
+}
+endsnippet
+
+snippet enum "General Enum"
+/**
+ * .<p>
+ */
+public enum ${1} {
+	/**
+	 * .<p>
+	 */
+	${2},
+	/**
+	 * .<p>
+	 */
+	${3};
+}
+endsnippet
+
+snippet "interface general" "General Interface"
+package `!v maven#getJavaPackageOfBuffer(bufnr("%"))`;
+
+public interface `!v expand("%:t:r")` {
+	public ${1}();
+}
+endsnippet
+
+snippet "interface lambda" "@FunctionalInterface"
+package `!v maven#getJavaPackageOfBuffer(bufnr("%"))`;
+
+@FunctionalInterface
+public interface `!v expand("%:t:r")` {
+	public ${1} ${2}();
+}
+endsnippet
+
+snippet "interface anno" "@Annotation"
+package `!v maven#getJavaPackageOfBuffer(bufnr("%"))`;
+
+import java.lang.annotation.*;
+
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented @Inherited
+public @interface `!v expand("%:t:r")` {
+	public ${1} ${2}();
+}
+endsnippet
+
+snippet expr "package"
+package `!v maven#getJavaPackageOfBuffer(bufnr("%"))`;
+endsnippet
+
+snippet "method getter" "getter"
+/**
+ * Gets ${1}.<p>
+ *
+ * @return ${2}
+ */
+public ${3} get${4}()
+{
+	return ${5};
+}
+endsnippet
+
+snippet "method setter" "setter"
+/**
+ * Sets ${1}.<p>
+ *
+ * @param new${2} ${3}
+ */
+public void set``(${4} new$2)
+{
+	$2 = new$2;
+}
+endsnippet
+
+snippet "field accessor" "method accessor"
+/**
+ * Gets ${1}.<p>
+ *
+ * @return $1
+ */
+public `!v g:_java_VarType` get`!v g:_java_CapVarName`()
+{
+	return `!v g:_java_VarName`;
+}
+
+/**
+ * Sets $1.<p>
+ *
+ * @param new`!v g:_java_CapVarName` $1
+ */
+public void set`!v g:_java_CapVarName`(`!v g:_java_VarType` new`!v g:_java_CapVarName`)
+{
+	`!v g:_java_VarName` = new`!v g:_java_CapVarName`;
+}
+endsnippet
+
+snippet "method equals" "equals"
+import org.apache.commons.lang3.builder.EqualsBuilder;
+
+@Override
+public boolean equals(Object obj)
+{
+	if (obj == null) { return false; }
+	if (obj == this) { return true; }
+	if (obj.getClass() != getClass()) {
+		return false;
+	}
+
+	`!v expand("%:t:r")` rhs = (`!v expand("%:t:r")`)obj;
+	return new EqualsBuilder()
+		.appendSuper(super.equals(obj))
+		.append(this.${1}(), rhs.$1())
+		.append(this.${2}(), rhs.$2())
+		.isEquals();
+}
+endsnippet
+
+snippet "method hashCode" "hashCode"
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+@Override
+public int hashCode()
+{
+	return new HashCodeBuilder(`!v java#randomOddNumber(1001, 999999999)`, `!v java#randomOddNumber(1001, 999999999)`)
+		.append(${1}())
+		.append(${2}())
+	.toHashCode();
+}
+endsnippet
