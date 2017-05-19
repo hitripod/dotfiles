@@ -33,7 +33,7 @@ then
     alias clang++='xcrun clang++ --sysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/'
     alias wedding='rsync -avz -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress ~/Desktop/wedding_day-pack modcarl@troup.dreamhost.com:/home/modcarl/hitripod.com/public/marriage/20140920/'
     alias mtr='sudo mtr'
-    alias lsof='lsof -n -i4TCP|grep LISTEN'
+    alias lstcplisten='lsof -n -i4TCP|grep LISTEN'
 
     # Wrap git automatically by adding the following to ~/.zshrc:
     eval "$(hub alias -s)"
@@ -207,6 +207,7 @@ my_accounts=(
     root@61.164.125.246
     root@61.164.125.252
     root@101.200.190.171
+    root@128.199.103.34 # Digital Ocean
 
     ouyw@211.152.9.188
     myhung@122.116.46.180
@@ -236,7 +237,7 @@ gg () {
     #    grep -rIn --color "$1" "$2" --ignore-case --exclude=tags --exclude=react-bootstrap.min.js
     #else
         grep -rIn --color $* ./* --ignore-case --exclude=tags --exclude="*.min.js" --exclude="*.min.css" --exclude="*bootstrap.js"\
-            --exclude="*.min.map" --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=build --exclude-dir=static
+            --exclude="*.min.map" --exclude="jquery.js" --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=build --exclude-dir=static
     #fi
 }
 

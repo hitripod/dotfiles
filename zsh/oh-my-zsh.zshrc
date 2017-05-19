@@ -83,6 +83,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+if [[ `uname` == "Darwin" ]]
+then
+    export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-autoload -U compinit && compinit
+    autoload -U compinit && compinit
+
+    export NVM_DIR="/usr/local/opt/nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+fi

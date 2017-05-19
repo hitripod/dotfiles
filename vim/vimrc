@@ -41,6 +41,7 @@ Plugin 'dzeban/vim-log-syntax'
 Plugin 'kylef/apiblueprint.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'vim-scripts/applescript.vim'
+Plugin 'editorconfig/editorconfig-vim'
 
 " vim-scripts repos
 Plugin 'closetag.vim'
