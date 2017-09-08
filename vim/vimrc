@@ -35,6 +35,8 @@ Plugin 'benmills/vimux-golang'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'tomlion/vim-solidity'
+Plugin 'mzlogin/vim-markdown-toc'
 
 " for syntax highlighting
 Plugin 'dzeban/vim-log-syntax'
