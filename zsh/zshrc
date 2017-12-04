@@ -237,7 +237,8 @@ gg () {
     #    grep -rIn --color "$1" "$2" --ignore-case --exclude=tags --exclude=react-bootstrap.min.js
     #else
         grep -rIn --color $* ./* --ignore-case --exclude=tags --exclude="*.min.js" --exclude="*.min.css" --exclude="*bootstrap.js"\
-            --exclude="*.min.map" --exclude="jquery.js" --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=build --exclude-dir=static
+            --exclude="*.min.map" --exclude="jquery.js" --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=build --exclude-dir=static\
+            --exclude-dir=vendor --exclude="yarn.lock" --exclude="Gopkg.lock" --exclude-dir=site-packages
     #fi
 }
 
@@ -754,3 +755,7 @@ bindkey '^f' autosuggest-execute
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+
+# Google Compute Engine
+source /Users/kordan/Downloads/google-cloud-sdk/completion.zsh.inc
+source /Users/kordan/Downloads/google-cloud-sdk/path.zsh.inc

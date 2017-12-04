@@ -89,7 +89,10 @@ Execute `cscope -bqR && ctags -R *` at your project root.
 
 ### [Emmet](https://github.com/mattn/emmet-vim)
 
-`<C-y>,` to expand the abbreviation. [More Tutorials](https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL)
+`<C-y>,` to expand the abbreviation.
+`<C-y>A` to add markdown format for URL.
+
+[More Tutorials](https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL)
 
 ### [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
 
@@ -105,10 +108,20 @@ Execute `cscope -bqR && ctags -R *` at your project root.
 
 Firstly, enter `:GenTocGFM` to generate ToC, and update it by `:UpdateToc`.
 
+### [vim-markdown-toc](https://github.com/mzlogin/vim-markdown-toc)
+
+Firstly, enter `:GenTocGFM` to generate ToC, and update it by `:UpdateToc`.
+
+### [FlyGrep](https://github.com/hitripod/FlyGrep.vim)
+
+enter `:FlyGrep`: searching in project on the fly with default tools
+<tab>: move cursor line down
+
 ### Shortcuts
 
 * `<leader>p` to toggle paste mode.
 * `<leader>n` to toggle line number.
+* `<leader>g` to do FlyGrep.
 * `<C-h>`, `<C-j>`, `<C-k>`, `<C-l>` to maximize the splitted window of the left/uppper/lower/right one.
 * `<leader>hon` and `<leader>hoff` to turn ON/OFF the hex mode.
 

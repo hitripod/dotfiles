@@ -37,6 +37,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tomlion/vim-solidity'
 Plugin 'mzlogin/vim-markdown-toc'
+Plugin 'hitripod/FlyGrep.vim'
 
 " for syntax highlighting
 Plugin 'dzeban/vim-log-syntax'
@@ -318,6 +319,8 @@ cnoremap <C-K>      <C-U>
 
 " ,p toggles paste mode
 nmap <leader>p :set paste!<BAR>set paste?<CR>
+" ,g fly grep
+nmap <leader>g :FlyGrep<CR>
 " ,n toggles line number
 nmap <leader>n :set nu!<CR>:set rnu!<BAR>set nu?<CR>:set rnu?<CR>
 " Replace the word with yanked text
@@ -399,7 +402,7 @@ map <Leader>hof :%!xxd -r<CR>
 " map <C-[> <ESC>:po<CR>
 
 " ,g generates the header guard
-map <leader>g :call IncludeGuard()<CR>
+" map <leader>g :call IncludeGuard()<CR>
 fun! IncludeGuard()
    let basename = substitute(bufname(""), '.*/', '', '')
    let guard = '_' . substitute(toupper(basename), '\.', '_', "H")
