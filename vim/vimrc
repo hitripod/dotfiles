@@ -37,7 +37,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tomlion/vim-solidity'
 Plugin 'mzlogin/vim-markdown-toc'
-Plugin 'hitripod/FlyGrep.vim'
+Plugin 'mileszs/ack.vim'
 
 " for syntax highlighting
 Plugin 'dzeban/vim-log-syntax'
@@ -208,6 +208,12 @@ fun! VimuxRunInputCommand()
     :exe 'VimuxRunCommand("' . cmd . '")'
     :unlet! cmd
 endfun
+
+fun! AckRunInputCommand()
+    let cmd = escape(input("Ack Grep:"), '"')
+    :exe 'Ack! ' . cmd
+    :unlet! cmd
+endfun
 "------------------------------ LLVM bitcode ----------------------------"
 augroup filetype
   au! BufRead,BufNewFile *.ll     set filetype=llvm
@@ -319,8 +325,9 @@ cnoremap <C-K>      <C-U>
 
 " ,p toggles paste mode
 nmap <leader>p :set paste!<BAR>set paste?<CR>
-" ,g fly grep
-nmap <leader>g :FlyGrep<CR>
+" ,g Ack grep
+nmap <leader>g :call AckRunInputCommand()<CR>
+let g:ackprg = 'ag --nogroup --nocolor --column'
 " ,n toggles line number
 nmap <leader>n :set nu!<CR>:set rnu!<BAR>set nu?<CR>:set rnu?<CR>
 " Replace the word with yanked text

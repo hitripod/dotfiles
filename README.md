@@ -27,12 +27,13 @@ git clone git://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-h
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
 # Make the symbolic links
-ln -s ~/.vim/vimrc ~/.vimrc
-ln -s ~/.vim/gvimrc ~/.gvimrc
-rm -rf ~/.zshrc && ln -s ~/.vim/zsh/oh-my-zsh.zshrc ~/.zshrc
-ln -s ~/.vim/zsh/zshrc ~/.oh-my-zsh/custom/kordan.zsh
-mkdir -p ~/.oh-my-zsh/custom/lib && ln -s ~/.vim/zsh/key-bindings.zsh ~/.oh-my-zsh/custom/lib/key-bindings.zsh
-ln -s ~/.vim/git/gitconfig ~/.gitconfig
+ln -s ~/.dotfiles/vimrc ~/.vimrc
+ln -s ~/.dotfiles/gvimrc ~/.gvimrc
+rm -rf ~/.zshrc && ln -s ~/.dotfiles/zsh/oh-my-zsh.zshrc ~/.zshrc
+ln -s ~/.dotfiles/zsh/zshrc ~/.oh-my-zsh/custom/kordan.zsh
+mkdir -p ~/.oh-my-zsh/custom/lib && ln -s ~/.dotfiles/zsh/key-bindings.zsh ~/.oh-my-zsh/custom/lib/key-bindings.zsh
+ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig
+ln -s ~/.dotfiles/misc/ackrc ~/.ackrc
 
 # Initilize and update those plugins using Vundle
 vim +PluginInstall +qall
@@ -102,7 +103,7 @@ Execute `cscope -bqR && ctags -R *` at your project root.
 
 ### [Ultisnips](https://github.com/SirVer/ultisnips)
 
-* `<c-b>`: Expand the UltiSnips
+* `<c-b>`: Expand the UltiSnips in `~/.dotfiles/vim/UltiSnips/go/code.snippets`
 
 ### [vim-markdown-toc](https://github.com/mzlogin/vim-markdown-toc)
 
@@ -114,14 +115,17 @@ Firstly, enter `:GenTocGFM` to generate ToC, and update it by `:UpdateToc`.
 
 ### [FlyGrep](https://github.com/hitripod/FlyGrep.vim)
 
-enter `:FlyGrep`: searching in project on the fly with default tools
-<tab>: move cursor line down
+[GitHub - mileszs/ack.vim: ](https://github.com/mileszs/ack.vim)
+
+Vim plugin for the Perl module / CLI script `ack`. Enter `:Ack!`: searching in project on the fly with default tools.
+<leader>a: trigger `:Ack!`
 
 ### Shortcuts
 
 * `<leader>p` to toggle paste mode.
 * `<leader>n` to toggle line number.
 * `<leader>g` to do FlyGrep.
+* `<leader>e` to run command by Vimux.
 * `<C-h>`, `<C-j>`, `<C-k>`, `<C-l>` to maximize the splitted window of the left/uppper/lower/right one.
 * `<leader>hon` and `<leader>hoff` to turn ON/OFF the hex mode.
 
