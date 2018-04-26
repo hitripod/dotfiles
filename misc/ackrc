@@ -21,6 +21,17 @@
 --ignore-dir=node_modules/
 --ignore-dir=vendor/
 --ignore-dir=site-packages/
+--ignore-dir=build/
+--ignore-dir=dist/
+--ignore-dir=app/assets/js
+--ignore-file=match:"*.min.js"
+--ignore-file=match:"*.min.css"
+--ignore-file=match:"*.min.map"
+--ignore-file=match:"*.boostrap.js"
+--ignore-file=is:tags
+--ignore-file=is:jquery.js
+--ignore-file=is:yarn.lock
+--ignore-file=is:Gopkg.lock
 
 #make sure ack knows how to search common filetypes used in rails projects
 --type-add=css=scss

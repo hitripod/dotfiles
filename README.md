@@ -54,6 +54,7 @@ Press `,t` to do the fuzzy search.
 * `ysiw]`:     Yield Surround `[ ]` in the word.
 * `ysiw<em>`:  Yield Surround `<em></em>` for the entire line.
 * `yss)`:      Yield Surround `( )` for the entire line.
+* `vS)`:      Yield Surround `( )` for the selected text.
 
 ### [SuperTab](http://www.github.com/ervandew/supertab): Perform all your vim insert mode completions with Tab.
 
@@ -119,6 +120,10 @@ Firstly, enter `:GenTocGFM` to generate ToC, and update it by `:UpdateToc`.
 
 Vim plugin for the Perl module / CLI script `ack`. Enter `:Ack!`: searching in project on the fly with default tools.
 <leader>a: trigger `:Ack!`
+
+### [A vim plugin that adds some nice extras for working with markdown documents](https://github.com/SidOfc/mkdx)
+
+<leader>,: Tablize your csv (only valid in `*.md`).
 
 ### Shortcuts
 

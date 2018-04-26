@@ -38,6 +38,8 @@ Plugin 'honza/vim-snippets'
 Plugin 'tomlion/vim-solidity'
 Plugin 'mzlogin/vim-markdown-toc'
 Plugin 'mileszs/ack.vim'
+Plugin 'SidOfc/mkdx'
+Plugin 'tpope/vim-repeat'
 
 " for syntax highlighting
 Plugin 'dzeban/vim-log-syntax'
