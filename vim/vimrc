@@ -194,7 +194,18 @@ highlight Search term=reverse ctermbg=4 ctermfg=7
 "---------------------------------------------------------------------------
 
 "One way to make sure to remove all trailing whitespace in a file is to set an autocmd in your .vimrc file. Every time the user issues a :w command, Vim will automatically remove all trailing whitespace before saving.
-autocmd BufWritePre * :%s/\s\+$//e
+"autocmd BufWritePre * :%s/\s\+$//e
+
+fun! StripTrailingWhitespace()
+    " Only strip if the b:noStripeWhitespace variable isn't set
+    if exists('b:noStripWhitespace')
+        return
+    endif
+    %s/\s\+$//e
+endfun
+
+autocmd BufWritePre * call StripTrailingWhitespace()
+autocmd FileType markdown let b:noStripWhitespace=1
 
 "---------------------------------------------------------------------------
 " Tip #382: Search for <cword> and replace with input() in all open buffers
@@ -401,6 +412,9 @@ nnoremap <leader>m :silent !open '%:p'<cr>
 " convert binary to hex
 map <Leader>hon :%!xxd<CR>
 map <Leader>hof :%!xxd -r<CR>
+
+" Reveal the current file in the NERDTree
+nmap <Leader>ff :NERDTreeFind<CR>
 "--------------- End of self-defined keymap --------------
 
 "---------------------------------------------------------------------------

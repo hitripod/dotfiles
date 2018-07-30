@@ -21,7 +21,7 @@ then
     export LLVM_HOME="/Users/kordan/llvm-128332-bin"
     export PYTHONPATH="/Library/Python/2.7/site-packages:$PYTHONPATH"
     alias ls='ls -Gv'
-    alias sloc='cloc-1.62.pl'
+    alias sloc='cloc-1.72.pl'
     alias ll='ls -laGvh'
     alias grep='grep --color=auto'
     alias diff='colordiff'
