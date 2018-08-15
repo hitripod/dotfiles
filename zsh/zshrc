@@ -344,7 +344,7 @@ hash -d d="/Users/kordan/Downloads/"
 hash -d KO="/Users/kordan/CodeProject/nodejs/quick-hitter"
 hash -d OWL="/Users/kordan/CodeProject/owl/open-falcon"
 hash -d BACKEND="/Users/kordan/go/src/github.com/Cepave/open-falcon-backend"
-hash -d GITHUB="/Users/kordan/go/src/github.com"
+hash -d G="/Users/kordan/go/src/github.com"
 hash -d NOTES="/Users/kordan/Dropbox/Notational Data/Markdowns"
 
 alias hls='hash -d'

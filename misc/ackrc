@@ -23,6 +23,7 @@
 --ignore-dir=site-packages/
 --ignore-dir=build/
 --ignore-dir=dist/
+--ignore-dir=public/js
 --ignore-dir=app/assets/js
 --ignore-file=match:"*.min.js"
 --ignore-file=match:"*.min.css"
