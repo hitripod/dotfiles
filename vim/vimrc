@@ -133,6 +133,7 @@ set clipboard=unnamed   " yank to the system register (*) by default
   set nocursorcolumn      " Don't paint cursor column
   let html_no_rendering=1 " Don't render italic, bold, links in HTML
 " }
+set colorcolumn=80
 set autoindent          " auto indentation
 set nobackup            " no *~ backup files
 set copyindent          " copy the previous indentation on autoindenting
