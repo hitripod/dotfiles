@@ -117,11 +117,22 @@ set showcmd             " show command
 set incsearch           " While typing a search pattern, show immediately where the so far typed pattern matches.
 set hlsearch            " When there is a previous search pattern, highlight all its matches.
 set clipboard=unnamed   " yank to the system register (*) by default
-set showmatch           " Cursor shows matching ) and }
-set showmode            " Show current mode
-set wildchar=<TAB>      " start wild expansion in the command line using <TAB>
-set wildmenu            " wild char completion menu
-set wildignore=*.o,*.class,*.pyc " ignore these files while expanding wild chars
+" for performance {
+  "set showmatch           " Cursor shows matching ) and }
+  "set showmode            " Show current mode
+  "set wildchar=<TAB>      " start wild expansion in the command line using <TAB>
+  "set wildmenu            " wild char completion menu
+  "set wildignore=*.o,*.class,*.pyc " ignore these files while expanding wild chars
+  set ttyfast
+  "set lazyredraw
+  set regexpengine=1
+  set synmaxcol=200
+  " disable auto matching parens
+  let g:loaded_matchparen=1 " Don't load matchit.vim (paren/bracket matching)
+  set noshowmatch         " Don't match parentheses/brackets
+  set nocursorcolumn      " Don't paint cursor column
+  let html_no_rendering=1 " Don't render italic, bold, links in HTML
+" }
 set autoindent          " auto indentation
 set nobackup            " no *~ backup files
 set copyindent          " copy the previous indentation on autoindenting
