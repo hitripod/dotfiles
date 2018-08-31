@@ -40,6 +40,7 @@ Plugin 'mzlogin/vim-markdown-toc'
 Plugin 'mileszs/ack.vim'
 Plugin 'SidOfc/mkdx'
 Plugin 'tpope/vim-repeat'
+Plugin 'pedrohdz/vim-yaml-folds'
 
 " for syntax highlighting
 Plugin 'dzeban/vim-log-syntax'

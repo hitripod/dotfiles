@@ -24,6 +24,7 @@
     update  = pull --rebase origin master
     pr      = pull --rebase
     upload  = push origin master
+    gerrit   = push origin HEAD:refs/for/master
     final   = rebase -i HEAD~2
     dry     = merge --no-commit --no-ff
     usub    = "submodule foreach --recursive git pull --rebase origin master"
