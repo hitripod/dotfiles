@@ -88,6 +88,11 @@ Execute `cscope -bqR && ctags -R *` at your project root.
 
 * `<c-b>`: Expand the UltiSnips in `~/.dotfiles/vim/UltiSnips/go/code.snippets`
 
+
+### [Vim script for text filtering and alignment](https://github.com/godlygeek/tabular)
+
+`:Tabularize /<delimiter>` to tabularize the text with the delimiter.
+
 ### [vim-markdown-toc](https://github.com/mzlogin/vim-markdown-toc)
 
 Firstly, enter `:GenTocGFM` to generate ToC, and update it by `:UpdateToc`.

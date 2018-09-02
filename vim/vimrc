@@ -41,6 +41,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'SidOfc/mkdx'
 Plugin 'tpope/vim-repeat'
 Plugin 'pedrohdz/vim-yaml-folds'
+Plugin 'godlygeek/tabular'
 
 " for syntax highlighting
 Plugin 'dzeban/vim-log-syntax'
