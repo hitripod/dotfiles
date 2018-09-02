@@ -10,6 +10,13 @@ Prerequisites
 - autojump
 - zsh-autosuggestions
 
+```shell
+brew install tmux go tig vim macvim
+brew install zsh-syntax-highlighting cscope
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+sudo python get-pip.py
+pip install virtualdev
+```
 
 The Installation Script
 -----------------------
