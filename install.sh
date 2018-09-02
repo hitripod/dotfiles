@@ -16,7 +16,7 @@ die() {
 
 # Check out the prerequisites
 git clone https://github.com/hitripod/dotfiles.git ~/.dotfiles
-ln -sf $DOTFILES_HOME/vim ~/.vim  
+ln -sf $DOTFILES_HOME/vim ~/.vim
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone git://github.com/tarruda/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 git clone git://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
@@ -28,7 +28,7 @@ git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugi
 ln -sf ~/.dotfiles/vim/vimrc ~/.vimrc
 ln -sf ~/.dotfiles/vim/gvimrc ~/.gvimrc
 # Make the symbolic links - ZSH
-rm -rf ~/.zshrc && ln -s ~/.dotfiles/zsh/oh-my-zsh.zshrc ~/.zshrc 
+rm -rf ~/.zshrc && ln -s ~/.dotfiles/zsh/oh-my-zsh.zshrc ~/.zshrc
 ln -sf ~/.dotfiles/zsh/zshrc ~/.oh-my-zsh/custom/kordan.zsh
 mkdir -p ~/.oh-my-zsh/custom/lib && \
 ln -sf ~/.dotfiles/zsh/key-bindings.zsh ~/.oh-my-zsh/custom/lib/key-bindings.zsh
@@ -36,6 +36,9 @@ ln -sf ~/.dotfiles/zsh/key-bindings.zsh ~/.oh-my-zsh/custom/lib/key-bindings.zsh
 ln -sf ~/.dotfiles/git/gitconfig ~/.gitconfig
 # Make the symbolic links - TMUX
 ln -sf ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
+# Make the symbolic links - Misc
+ln -sf ~/.dotfiles/misc/ackrc ~/.ackrc
+ln -sf ~/.dotfiles/misc/profile ~/.profile
 
 # Initilize and update those plugins using Vundle
 vim +PluginInstall +qall
@@ -44,7 +47,9 @@ echo "Kordan's dotfile is installed."
 clean() {
     rm -rf ~/.vimrc
     rm -rf ~/.gvimrc
-    rm -rf ~/.zshrc 
+    rm -rf ~/.zshrc
+    rm -rf ~/.ackrc
+    rm -rf ~/.profile
     rm -rf ~/.oh-my-zsh/custom/kordan.zsh
     rm -rf ~/.oh-my-zsh/custom/lib/key-bindings.zsh
     rm -rf ~/.gitconfig
