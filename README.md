@@ -12,7 +12,7 @@ Prerequisites
 
 ```shell
 brew install tmux go tig vim macvim
-brew install zsh-syntax-highlighting cscope
+brew install zsh-syntax-highlighting cmake cscope
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 sudo python get-pip.py
 pip install virtualdev
@@ -22,29 +22,6 @@ The Installation Script
 -----------------------
 
 `wget -O - https://raw.githubusercontent.com/hitripod/dotfiles/master/install.sh | sh`
-
-OR
-
-```bash
-# Check out the prerequisites
-git clone https://github.com/hitripod/dotfiles.git ~/.vim
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-git clone git://github.com/tarruda/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-git clone git://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
-sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-
-# Make the symbolic links
-ln -s ~/.dotfiles/vimrc ~/.vimrc
-ln -s ~/.dotfiles/gvimrc ~/.gvimrc
-rm -rf ~/.zshrc && ln -s ~/.dotfiles/zsh/oh-my-zsh.zshrc ~/.zshrc
-ln -s ~/.dotfiles/zsh/zshrc ~/.oh-my-zsh/custom/kordan.zsh
-mkdir -p ~/.oh-my-zsh/custom/lib && ln -s ~/.dotfiles/zsh/key-bindings.zsh ~/.oh-my-zsh/custom/lib/key-bindings.zsh
-ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig
-ln -s ~/.dotfiles/misc/ackrc ~/.ackrc
-
-# Initilize and update those plugins using Vundle
-vim +PluginInstall +qall
-```
 
 PLUGINS
 -------
@@ -105,17 +82,11 @@ Execute `cscope -bqR && ctags -R *` at your project root.
 
 ### [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
 
-  xcode-select --install
-  brew install cmake
-  ~/.vim/bundle/YouCompleteMe/install.py --clang-completer
+    ~/.vim/bundle/YouCompleteMe/install.py --clang-completer --go-completer
 
 ### [Ultisnips](https://github.com/SirVer/ultisnips)
 
 * `<c-b>`: Expand the UltiSnips in `~/.dotfiles/vim/UltiSnips/go/code.snippets`
-
-### [vim-markdown-toc](https://github.com/mzlogin/vim-markdown-toc)
-
-Firstly, enter `:GenTocGFM` to generate ToC, and update it by `:UpdateToc`.
 
 ### [vim-markdown-toc](https://github.com/mzlogin/vim-markdown-toc)
 
