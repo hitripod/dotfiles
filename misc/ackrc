@@ -18,11 +18,13 @@
 # less -r
 
 --ignore-dir=.idea/
+--ignore-dir=.nuxt/
 --ignore-dir=node_modules/
 --ignore-dir=vendor/
 --ignore-dir=site-packages/
 --ignore-dir=build/
 --ignore-dir=dist/
+--ignore-dir=static/
 --ignore-dir=public/js
 --ignore-dir=app/assets/js
 --ignore-file=match:"*.min.js"
@@ -33,6 +35,7 @@
 --ignore-file=is:jquery.js
 --ignore-file=is:yarn.lock
 --ignore-file=is:Gopkg.lock
+--ignore-file=is:package-lock.json
 
 #make sure ack knows how to search common filetypes used in rails projects
 --type-add=css=scss

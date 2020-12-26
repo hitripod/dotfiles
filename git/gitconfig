@@ -22,7 +22,7 @@
     hreset  = reset --hard
     dt      = checkout --detach
     update  = pull --rebase origin master
-    pr      = pull --rebase
+    pre      = pull --rebase
     upload  = push origin master
     gerrit   = push origin HEAD:refs/for/master
     final   = rebase -i HEAD~2
@@ -54,3 +54,7 @@
 	sslVerify = true
 [github]
     oauth-token = 97ebfe08c385ba5ca37bed268414cc7f07f713db
+[pager]
+	branch = cat
+[credential]
+	helper = osxkeychain

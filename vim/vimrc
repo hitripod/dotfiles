@@ -49,6 +49,7 @@ Plugin 'kylef/apiblueprint.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'vim-scripts/applescript.vim'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'posva/vim-vue'
 
 " vim-scripts repos
 Plugin 'closetag.vim'
