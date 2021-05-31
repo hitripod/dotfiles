@@ -3,7 +3,7 @@ ulimit -S -n 1024
 
 export APIARY_API_KEY="72ab072fdf79f2384a06f9f0ae81fbf5"
 export GOPATH="$HOME/go"
-export PATH="$PATH:/usr/local/bin:/usr/local/opt/go/libexec/bin:/opt/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/X10R6/bin:/usr/local/jdk1.6.0_07/bin:/sw/bin:$HOME/android-sdk-mac_x86/platform-tools:$HOME/bin/binutils/bin:$HOME/bin:$HOME/llvm-2.8/bin:/usr/local/texlive/2010basic/bin:/Users/kordan/bin/python-client:/usr/local/texlive/2010/bin/x86_64-darwin:/usr/local/Cellar/ruby/1.9.2-p290/bin:/Developer/usr/bin:$HOME/.rvm/gems/ruby-2.0.0-p247@rails-4.0.0/bin:$GOPATH:$GOPATH/bin:/Users/kordan/bin/apache-maven-3.6.0/bin:$HOME/Library/Python/2.7/bin"
+export PATH="/usr/local/opt/sqlite/bin:$PATH:/usr/local/bin:/usr/local/opt/go/libexec/bin:/opt/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/X10R6/bin:/usr/local/jdk1.6.0_07/bin:/sw/bin:$HOME/android-sdk-mac_x86/platform-tools:$HOME/bin/binutils/bin:$HOME/bin:$HOME/llvm-2.8/bin:/usr/local/texlive/2010basic/bin:/Users/kordan/bin/python-client:/usr/local/texlive/2010/bin/x86_64-darwin:/usr/local/Cellar/ruby/1.9.2-p290/bin:/Developer/usr/bin:$HOME/.rvm/gems/ruby-2.0.0-p247@rails-4.0.0/bin:$GOPATH:$GOPATH/bin:/Users/kordan/bin/apache-maven-3.6.0/bin:$HOME/Library/Python/2.7/bin"
 export EDITOR=vim
 export LANG=en_US.UTF-8
 
@@ -763,3 +763,5 @@ export NVM_DIR="$HOME/.nvm"
 source /Users/kordan/bin/google-cloud-sdk/completion.zsh.inc
 source /Users/kordan/bin/google-cloud-sdk/path.zsh.inc
 export CLOUDSDK_PYTHON=/usr/bin/python
+
+#eval "$(pyenv init -)"
