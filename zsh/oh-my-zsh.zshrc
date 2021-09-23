@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=~/.oh-my-zsh
+export ZSH="/Users/kordan/.oh-my-zsh"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -49,6 +49,7 @@ export ZSH=~/.oh-my-zsh
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+source $ZSH/oh-my-zsh.sh
 plugins=(git, brew, docker, npm, autojump, zsh-completions)
 
 # User configuration
@@ -56,7 +57,7 @@ plugins=(git, brew, docker, npm, autojump, zsh-completions)
 # export MANPATH="/usr/local/man:$MANPATH"
 
 export PATH="$PATH:/usr/local/heroku/bin:/usr/local/bin:/opt/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/X10R6/bin:/usr/local/jdk1.6.0_07/bin:/sw/bin:/Users/kordan/android-sdk-mac_x86/platform-tools:/Users/kordan/bin/binutils/bin:/Users/kordan/bin:/Users/kordan/llvm-2.8/bin:/usr/local/texlive/2010basic/bin:/Users/kordan/bin/python-client:/usr/local/texlive/2010/bin/x86_64-darwin:/usr/local/Cellar/ruby/1.9.2-p290/bin:/Developer/usr/bin:/Users/kordan/.rvm/gems/ruby-2.0.0-p247@rails-4.0.0/bin:/Users/kordan/go:/Users/kordan/CodeProject/owl/open-falcon:/Users/kordan/CodeProject/owl/open-falcon/bin:/Users/kordan/.rvm/bin"
-source $ZSH/oh-my-zsh.sh
+
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
