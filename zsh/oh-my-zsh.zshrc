@@ -57,6 +57,7 @@ plugins=(git, brew, docker, npm, autojump, zsh-completions)
 # export MANPATH="/usr/local/man:$MANPATH"
 
 export PATH="$PATH:/usr/local/heroku/bin:/usr/local/bin:/opt/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/X10R6/bin:/usr/local/jdk1.6.0_07/bin:/sw/bin:/Users/kordan/android-sdk-mac_x86/platform-tools:/Users/kordan/bin/binutils/bin:/Users/kordan/bin:/Users/kordan/llvm-2.8/bin:/usr/local/texlive/2010basic/bin:/Users/kordan/bin/python-client:/usr/local/texlive/2010/bin/x86_64-darwin:/usr/local/Cellar/ruby/1.9.2-p290/bin:/Developer/usr/bin:/Users/kordan/.rvm/gems/ruby-2.0.0-p247@rails-4.0.0/bin:/Users/kordan/go:/Users/kordan/CodeProject/owl/open-falcon:/Users/kordan/CodeProject/owl/open-falcon/bin:/Users/kordan/.rvm/bin"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 
 # You may need to manually set your language environment
@@ -93,9 +94,22 @@ then
     export NVM_DIR="/usr/local/opt/nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 fi
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/kordan/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/kordan/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/kordan/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kordan/bin/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/kordan/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/kordan/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/kordan/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kordan/bin/google-cloud-sdk/completion.zsh.inc'; fi
+
+# pnpm
+export PNPM_HOME="/Users/kordan/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# for GCP
+ export CLOUDSDK_PYTHON=/Users/kordan/.pyenv/shims/python

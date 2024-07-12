@@ -36,12 +36,11 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tomlion/vim-solidity'
-Plugin 'mzlogin/vim-markdown-toc'
+Plugin 'godlygeek/tabular'
 Plugin 'mileszs/ack.vim'
 Plugin 'SidOfc/mkdx'
 Plugin 'tpope/vim-repeat'
 Plugin 'pedrohdz/vim-yaml-folds'
-Plugin 'godlygeek/tabular'
 
 " for syntax highlighting
 Plugin 'dzeban/vim-log-syntax'
