@@ -28,13 +28,15 @@ then
     alias diff='colordiff'
     alias h='history'
     alias top='htop'
-    alias vi='vim'
+    alias vi='nvim'
     alias wxpython='arch -i386 python' # wxpython is now a x86 installation
     alias clang='xcrun clang --sysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/'
     alias clang++='xcrun clang++ --sysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/'
     alias wedding='rsync -avz -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress ~/Desktop/wedding_day-pack modcarl@troup.dreamhost.com:/home/modcarl/hitripod.com/public/marriage/20140920/'
     alias mtr='sudo mtr'
     alias lstcplisten='lsof -n -i4TCP|grep LISTEN'
+    alias prstatus='gh search prs --author hitripod --state open'
+    alias ytd='yt-dlp -S "+size,+br"'
 
     # Wrap git automatically by adding the following to ~/.zshrc:
     eval "$(hub alias -s)"

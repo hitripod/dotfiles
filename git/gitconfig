@@ -55,6 +55,7 @@
 	templatedir = /Users/kordan/.git-templates
 [http]
 	sslVerify = true
+	postBuffer = 524288000
 [github]
     oauth-token = 97ebfe08c385ba5ca37bed268414cc7f07f713db
 [pager]
