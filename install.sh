@@ -11,8 +11,8 @@ die() {
 }
 
 [ -e "$DOTFILES_HOME/vim/vimrc" ]        && die "Kordan's dotfiles is already installed."
-[ -f "~/.vim" ] && [ ! -L "~/.vim" ]     && die "~/.vim already exists."
-[ -f "~/.vimrc" ] && [ ! -L "~/.vimrc" ] && die "~/.vimrc already exists."
+[ -f "$HOME/.vim" ] && [ ! -L "$HOME/.vim" ] && die "$HOME/.vim already exists."
+[ -f "$HOME/.vimrc" ] && [ ! -L "$HOME/.vimrc" ] && die "$HOME/.vimrc already exists."
 
 # Check out the prerequisites
 git clone https://github.com/hitripod/dotfiles.git ~/.dotfiles
