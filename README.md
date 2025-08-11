@@ -13,6 +13,8 @@ Prerequisites
 ```shell
 brew install tmux go tig vim macvim
 brew install zsh-syntax-highlighting cmake cscope
+# Optional: Install tmux-mem-cpu-load for system monitoring in tmux status bar
+brew install tmux-mem-cpu-load
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 sudo python get-pip.py
 pip install virtualdev
@@ -116,6 +118,22 @@ Vim plugin for the Perl module / CLI script `ack`. Enter `:Ack!`: searching in p
 * `<leader>e` to run command by Vimux.
 * `<C-h>`, `<C-j>`, `<C-k>`, `<C-l>` to maximize the splitted window of the left/uppper/lower/right one.
 * `<leader>hon` and `<leader>hoff` to turn ON/OFF the hex mode.
+
+TMUX Configuration
+------------------
+
+The tmux configuration has been updated for version 3.5+. Key features include:
+
+* **Prefix key**: Changed from `Ctrl-b` to `Ctrl-a` for better Vim compatibility
+* **Window splits**: 
+  - `Prefix + v`: Horizontal split
+  - `Prefix + b`: Vertical split (15% height)
+* **Pane navigation**: `Prefix + h/j/k/l` to navigate panes with Vim keys
+* **Pane resizing**: `Prefix + H/J/K/L` to resize panes
+* **Copy mode**: Vi-style key bindings with macOS clipboard integration
+* **Mouse support**: Fully enabled for scrolling and selection
+* **Status bar**: Custom theme with system information display
+* **Quick reload**: `Prefix + r` to reload configuration
 
 Other good references
 ---------------------

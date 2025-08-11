@@ -15,14 +15,20 @@ export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:$HOME/go"
 export PATH="$PATH:$HOME/fvm/default/bin"
+export PATH="$PATH:$HOME/.pub-cache/bin"
+export tPATH="$PYENV_ROOT/bin:$PATH"
+# MySQL and PostgreSQL
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+export PYENV_ROOT="$HOME/.pyenv"
+export NVM_DIR="$HOME/.nvm"
 
 # For NVM
 export NVM_DIR="/usr/local/opt/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+nvm use v22.13.0
 
-# MySQL and PostgreSQL
-export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 # Google Cloud SDK
 if [ -f "$HOME/bin/google-cloud-sdk/path.zsh.inc" ]; then
@@ -50,3 +56,10 @@ fi
 # Codeium Windsurf
 export PATH="$HOME/.codeium/windsurf/bin:$PATH"
 
+export PATH="$PATH:/Applications/screenpipe.app/Contents/MacOS"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
+# Task Master aliases added on 4/23/2025
+alias tm='task-master'
+alias taskmaster='task-master'
